@@ -1,0 +1,83 @@
+
+
+String Leetcode : 
+
+Longest Palindromic Substring
+
+*********************************
+
+
+string longestPalindrome(string s) {
+        
+        
+        //https://www.youtube.com/watch?v=WpYHNHofwjc
+        
+        int n  = s.size();
+        
+        vector<vector<int>> DP(n,vector<int>(n,0));
+        
+         int maxi=1;
+        
+        for(int i=0;i<n;i++)
+        { 
+            DP[i][i]=1;
+            maxi=max(maxi,DP[i][i]);
+            
+            if(i!=n-1)
+            {
+                DP[i][i+1]=(s[i]==s[i+1])?2:0;
+                maxi=max(maxi,DP[i][i+1]);
+            }
+            
+        }
+        
+      
+        
+        for(int L=3;L<=n;L++)
+        {
+            for(int i=0;i<=n-L;i++)
+            {
+               int j = i+L-1;
+                
+               if(s[i]==s[j] and DP[i+1][j-1]!=0)
+               {
+                   DP[i][j]=2+DP[i+1][j-1];
+                   maxi=max(maxi,DP[i][j]);
+               }
+                else
+                    DP[i][j]=0;
+            }
+        }
+        
+        
+        // Print(DP);
+        
+        int idxx;
+        int idxj;
+        int milgaya=0;
+        
+        
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+                if(DP[i][j]==maxi)
+                {
+                    idxx = i;
+                    idxj = j;
+                    milgaya++;
+                    break;
+                }
+            
+            if(milgaya)
+                break;
+        }
+        
+        
+        
+        return s.substr(idxx,idxj-idxx+1);
+        
+        
+        
+        
+    }

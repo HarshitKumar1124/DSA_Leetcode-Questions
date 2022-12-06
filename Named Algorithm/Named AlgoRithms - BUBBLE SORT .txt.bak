@@ -1,0 +1,80 @@
+
+
+Named AlgoRithms : BUBBLE SORT 
+
+Time Complexity : O(n^2)
+
+***************************
+
+Approach1 : Iterative
+
+***********************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+void Print(vector<int> &v)
+{
+    for(auto x:v)
+    cout<<x<<" ";
+    cout<<endl;
+}
+
+void BubbleSort(vector<int> &v)
+{
+    for(int i=0;i<v.size();i++)
+    {
+        for(int j=0;j<v.size()-1;j++)
+        {
+            if(v[j]>v[j+1])
+            swap(v[j],v[j+1]);
+            
+        }
+    }
+}
+
+int main()
+{
+    vector<int> v={2,5,1,4,2,3,6,6,9,5,7};
+    
+    //BubbleSort O(n^2)
+    
+    BubbleSort(v);
+    Print(v);
+    
+    
+}
+
+
+**********************************
+Approach2: Recursive
+
+**********************
+
+void BubbleSortRec(vector<int> &v,int n)
+{
+    if(n==1)
+    return;
+    
+    for(int i=0;i<v.size()-1;i++)
+    if(v[i]>v[i+1])
+    swap(v[i],v[i+1]);
+    
+    BubbleSortRec(v,n-1);
+}
+
+
+int main()
+{
+    vector<int> v={2,5,1,4,2,3,6,6,9,5,7};
+       
+    BubbleSortRec(v,n);
+    Print(v);
+    
+    
+}
+
+
+Note : Best Case : Already Sorted
+
+Worst Case :Sorted Decreasing Order

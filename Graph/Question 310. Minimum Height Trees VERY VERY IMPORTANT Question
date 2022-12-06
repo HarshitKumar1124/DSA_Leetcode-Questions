@@ -1,0 +1,203 @@
+
+
+
+Graph: 
+
+Question : 310. Minimum Height Trees
+
+https://leetcode.com/problems/minimum-height-trees/
+
+*************************************
+
+Approach: 1
+
+Time Complexity: O(n^2)
+
+This returns the Actual Minimum Height Of The Tree
+
+
+
+
+****************
+
+
+
+
+
+class Solution {
+    
+    void CreateEdge(int u,int v,vector<int> Graph[],bool Bidir = true)
+    {
+        Graph[u].push_back(v);
+        
+        if(Bidir)
+            Graph[v].push_back(u);
+    }
+    
+    
+    int HeightOfTree_BFS(vector<int> Graph[],int n,int start)
+    {
+        queue<int> q;
+        vector<int> visited(n,0);
+        visited[start]=1;
+        q.push(start);
+        
+        int height=0;
+        
+        while(q.size()!=0)
+        {
+             int elementatLevel = q.size();
+            
+            while(elementatLevel--)
+            {
+                int temp = q.front();
+                q.pop();
+                
+                for(auto x:Graph[temp])
+                {
+                    if(!visited[x])
+                    {
+                        q.push(x);
+                        visited[x]=1;
+                    }
+                }
+            }
+            
+            height++;
+        }
+        
+        return height-1;
+    }
+    
+    
+public:
+    vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+        
+        vector<int> Graph[n];
+        
+        for(int i=0;i<edges.size();i++)
+            CreateEdge(edges[i][0],edges[i][1],Graph);
+        
+   
+        
+        
+        vector<int> DP(n,0);
+        for(int i=0;i<n;i++)
+        {
+            int temp =HeightOfTree_BFS(Graph,n,i);
+           
+            DP[i] = temp;
+        
+        }
+        
+        
+        vector<int> ans;
+        
+        int mini = *min_element(DP.begin(),DP.end());
+        
+        for(int i=0;i<n;i++)
+            if(DP[i]==mini)
+                ans.push_back(i);
+        
+        return ans ;
+       
+    }
+};
+
+
+***************************************************************************************************************************
+
+Approach 2: 
+
+Time Complexity: O(n)
+
+
+This Gives the Vector of nodes that gives the minimum height when made as root nodes
+
+Explain : https://www.geeksforgeeks.org/roots-tree-gives-minimum-height/
+
+*************************
+
+class Solution {
+    
+    
+    vector<int> NodeWithMinHeightOfTree(vector<int> &indegree,int n,vector<int> Graph[])
+    {
+        queue<int> q;
+      
+    
+        for(int i=0;i<n;i++)
+            if(indegree[i]==1)
+                q.push(i);
+        
+        
+        
+           
+        while(n>2)
+        {
+            int elementatThatLevel = q.size();
+            n-=elementatThatLevel;
+            
+            while(elementatThatLevel--)
+            {
+                int temp = q.front();
+                q.pop();
+                
+                
+                for(auto x:Graph[temp])
+                {
+                    
+                        indegree[x]--;
+                    
+                    if(indegree[x]==1)
+                        q.push(x);
+                   
+                }
+            }
+            
+            
+        }
+        
+        vector<int> NodeWithMinimumTreeHeight;
+        
+        while(q.size()!=0)
+            NodeWithMinimumTreeHeight.push_back(q.front()),q.pop();
+        
+        return NodeWithMinimumTreeHeight;
+            
+    }
+    
+    void CreateEdge(int u,int v, vector<int> Graph[],bool Bidir=true)
+    {
+        Graph[u].push_back(v);
+        
+        if(Bidir)
+            Graph[v].push_back(u);
+    }
+    
+    
+    
+public:
+    vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+        
+        if(n==1)
+            return {0};
+        
+        if(n==2)
+            return {0,1};
+        
+        
+        vector<int> indegree(n,0);
+        
+        vector<int> Graph[n];
+        
+        
+        for(int i=0;i<edges.size();i++)
+            CreateEdge(edges[i][0],edges[i][1],Graph),indegree[edges[i][0]]++,indegree[edges[i][1]]++;
+        
+        
+        
+        return NodeWithMinHeightOfTree(indegree,n,Graph);
+        
+    }
+};

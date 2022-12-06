@@ -1,0 +1,39 @@
+
+
+Bit Manipulation 
+
+
+Question - 1359. Count All Valid Pickup and Delivery Options
+
+https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
+
+
+***********************
+
+Recursive Relation we get is: CPD(n) = n*(2n-1)*CPD(n-1)
+
+
+
+
+
+class Solution {
+    
+    int CPD(int n)
+    {
+        if(n==1)
+            return 1;
+        
+        long long x = CPD(n-1)%1000000007;
+        
+        return (n*(2*n-1)*x)%1000000007;
+    }
+    
+    
+    
+public:
+    int countOrders(int n) {
+        
+        return CPD(n);
+        
+    }
+};

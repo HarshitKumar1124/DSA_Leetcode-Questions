@@ -1,0 +1,65 @@
+
+
+Dynamic Programming: Minimum  Palindromic Partision : 
+
+******************************************************
+
+Using Meamization : 
+
+Time Complexity : O(N^3)
+
+************************
+
+ static bool IsPalindrome(string &s,int i,int j)
+    {
+        string temp ;
+        
+        int length = j-i+1;
+        
+        temp = s.substr(i,length);
+        
+    string temp2 = temp;
+        
+        reverse(temp2.begin(),temp2.end());
+        
+        return (temp2==temp);
+    }
+    
+   int MiniPartision(string &s,int &n,int i,int j,vector<vector<int>>&DP)
+    {
+       
+       if(DP[i][j]!=-1)
+           return DP[i][j];
+             
+        if(i==j)
+         return 0;
+        
+        
+        if(IsPalindrome(s,i,j)) 
+        return 0;
+       
+
+        
+        int mini = n-1;
+        for(int k=i;k<j;k++)
+        {
+            int temp = 1 + MiniPartision(s,n,i,k,DP) + MiniPartision(s,n,k+1,j,DP);
+            mini = min(mini,temp);
+        }
+        
+        return DP[i][j]=mini;
+    }
+    
+public:
+    int minCut(string s) {
+        
+        int n = s.size();
+        vector<vector<int>> DP(n,vector<int>(n,-1));
+        return MiniPartision(s,n,0,n-1,DP);
+        
+    }
+	
+	
+******************************************************************************************
+
+Using Other Approach: 

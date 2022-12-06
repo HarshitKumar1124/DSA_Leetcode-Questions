@@ -1,0 +1,126 @@
+
+
+
+BINARY TREE - Iterative Method Of ALL Tree Traversal In One iterations
+
+***********************************************************************
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+class Node{
+    
+    public:
+    int data;
+    Node* left=NULL;
+    Node* right = NULL;
+    
+    Node(int val)
+    {
+        data=val;
+    }
+};
+
+void Print(vector<int> &v)
+{
+    for(auto x:v)
+    cout<<x<<" ";
+    cout<<endl;
+}
+
+
+void GenerateTraversal(vector<int> &PreOrder,vector<int> &InOrder,vector<int> &PostOrder,Node* root)
+{
+    if(root==NULL)
+    return;
+    
+    stack<pair<Node*,int>> stk;
+    
+    stk.push(make_pair(root,1));
+    
+    while(stk.size()!=0)
+    {
+        pair<Node*,int> temp = stk.top();
+        stk.pop();
+        
+        // cout<<temp.first ->data<<" "<<temp.second<<endl;
+        
+        
+        Node* tempNode = temp.first;
+        int tempNum = temp.second;
+        
+        if(tempNum==1)
+        {
+            InOrder.push_back(tempNode->data);
+            
+            temp.second++;
+            stk.push(temp);
+            
+            if(tempNode->left!=NULL)
+            stk.push(make_pair(tempNode->left,1));
+        }
+        else if(tempNum==2)
+        {
+            PreOrder.push_back(tempNode->data);
+            
+            temp.second++;
+            stk.push(temp);
+            
+            if(tempNode->right!=NULL)
+            stk.push(make_pair(tempNode->right,1));
+        }
+        else if(tempNum==3)
+        {
+            PostOrder.push_back(tempNode->data);
+            
+
+        }
+    }
+}
+
+
+
+
+
+int main()
+{
+    
+    
+    Node* root = new Node(1);
+    
+    root->left = new Node(2);
+    
+    root->right = new Node(3);
+    
+    root->left->left = new Node(4);
+    
+    root->left->right = new Node(5);
+    
+    root->right->left = new Node(6);
+    
+    root->right->right = new Node(7);
+    
+    root->left->left->right = new Node(8);
+    
+    
+//   Generate All Traversals In Single Traversal
+
+   vector<int> Preorder,Inorder,PostOrder;
+   GenerateTraversal(Preorder,Inorder,PostOrder,root);
+   
+   
+   cout<<"PreOrder Traversal Is: ";
+   Print(Preorder);
+   
+   cout<<"InOrder Traversal Is: ";
+   Print(Inorder);
+   
+   cout<<"PostOrder Traversal Is: ";
+   Print(PostOrder);
+   
+   
+    
+    
+    
+}

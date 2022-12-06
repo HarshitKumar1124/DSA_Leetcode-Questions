@@ -1,0 +1,259 @@
+
+
+
+BINARY TREE - Creating Mirror Of Binary TREE
+
+**********************************************
+
+Approach : Go to each node and switch the pointer left to point right subtree and vice versa. (except leaf node)
+
+*****************************************************************************************************************
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+class Node{
+   
+    
+    public:
+    
+    Node* left=NULL;
+    Node* right=NULL;
+     
+    int data; 
+    Node(int val)
+    {
+        data=val;
+    }
+    
+};
+
+
+void Inorder(Node* root)
+{
+    if(root!=NULL)
+    {
+        Inorder(root->left);
+        cout<<root->data<<" ";
+        Inorder(root->right);
+    }
+}
+
+
+void CreateMirror(Node* root)
+{
+   if(root==NULL || root->left==NULL || root->right==NULL)
+   return;
+   
+   int x = root->left->data;
+   int y = root->right->data;
+   
+   CreateMirror(root->left);
+   
+   CreateMirror(root->right);
+   
+   Node* temp = root->right;
+   Node*temp2 = root->left;
+   
+   root->left=temp;
+   root->right = temp2;
+   
+   
+}
+
+
+int main()
+{
+    
+    Node* root = new Node(5);
+    
+    root->left = new Node(3);
+    
+    root->right = new Node(6);
+    
+    root->left->left = new Node(2);
+    
+    root->left->right = new Node(4);
+    
+    Inorder(root);
+    cout<<endl;
+    
+    CreateMirror(root);
+    
+    Inorder(root);
+    cout<<endl;
+    
+}
+
+
+***********************************************************************************************************
+
+Approach 2 : Reverse the content of Inorder Traversal of tree and assign the tree in Inorder Traversal Again
+
+*************************************************************************************************************
+
+//{ Driver Code Starts
+// Initial Template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+/* A binary tree node has data, pointer to left child
+   and a pointer to right child */
+struct Node {
+    int data;
+    struct Node *left;
+    struct Node *right;
+
+    Node(int x) {
+        data = x;
+        left = right = NULL;
+    }
+};
+
+// Function to Build Tree
+Node *buildTree(string str) {
+    // Corner Case
+    if (str.length() == 0 || str[0] == 'N') return NULL;
+
+    // Creating vector of strings from input
+    // string after spliting by space
+    vector<string> ip;
+
+    istringstream iss(str);
+    for (string str; iss >> str;) ip.push_back(str);
+
+    // Create the root of the tree
+    Node *root = new Node(stoi(ip[0]));
+
+    // Push the root to the queue
+    queue<Node *> queue;
+    queue.push(root);
+
+    // Starting from the second element
+    int i = 1;
+    while (!queue.empty() && i < ip.size()) {
+
+        // Get and remove the front of the queue
+        Node *currNode = queue.front();
+        queue.pop();
+
+        // Get the current node's value from the string
+        string currVal = ip[i];
+
+        // If the left child is not null
+        if (currVal != "N") {
+
+            // Create the left child for the current node
+            currNode->left = new Node(stoi(currVal));
+
+            // Push it to the queue
+            queue.push(currNode->left);
+        }
+
+        // For the right child
+        i++;
+        if (i >= ip.size()) break;
+        currVal = ip[i];
+
+        // If the right child is not null
+        if (currVal != "N") {
+
+            // Create the right child for the current node
+            currNode->right = new Node(stoi(currVal));
+
+            // Push it to the queue
+            queue.push(currNode->right);
+        }
+        i++;
+    }
+
+    return root;
+}
+
+/* Helper function to test mirror(). Given a binary
+   search tree, print out its data elements in
+   increasing sorted order.*/
+void inOrder(struct Node *node) {
+    if (node == NULL) return;
+
+    inOrder(node->left);
+    printf("%d ", node->data);
+
+    inOrder(node->right);
+}
+
+
+// } Driver Code Ends
+// function Template for C++
+
+/* A binary tree node has data, pointer to left child
+   and a pointer to right child /
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+
+    Node(int x){
+        data = x;
+        left = right = NULL;
+    }
+}; */
+
+class Solution {
+    
+    void Inorder(Node* root,vector<int>&order)
+    {
+        if(root!=NULL)
+        {
+            Inorder(root->left,order);
+            order.push_back(root->data);
+            Inorder(root->right,order);
+        }
+    }
+    
+    void InorderAssigning(Node* root,vector<int> &order)
+    {
+        if(root!=NULL)
+        {
+            InorderAssigning(root->left,order);
+            root->data=order.front();
+            order.erase(order.begin());
+            InorderAssigning(root->right,order);
+        }
+    }
+  public:
+    // Function to convert a binary tree into its mirror tree.
+    void mirror(Node* node) {
+        
+        vector<int> order;
+        Inorder(node,order);
+        
+        reverse(order.begin(),order.end());
+        
+        InorderAssigning(node,order);
+    }
+};
+
+//{ Driver Code Starts.
+
+/* Driver program to test size function*/
+int main() {
+    int tc;
+    scanf("%d ", &tc);
+    while (tc--) {
+        string str;
+        getline(cin, str);
+        Node *root = buildTree(str);
+        Solution ob;
+        ob.mirror(root);
+        inOrder(root);
+        cout << "\n";
+    }
+
+    return 0;
+}
+// } Driver Code Ends

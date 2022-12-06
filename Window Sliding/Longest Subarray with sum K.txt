@@ -1,0 +1,101 @@
+
+
+
+
+Longest Subarray with sum K : 
+
+
+Be Careful to have -ve Elements too. Thus Use PrefixSum Method.... Not simple Window sliding
+
+*********************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+int LongestSubarrayWithsumk(vector<int> &nums,int n,int k)
+{
+
+    int i=0,j=0;
+    unordered_map<int,vector<vector<int>> > mp;
+    int maxi = 0,sum=0;
+
+	while(j<n)
+	{
+		sum+=nums[j];
+
+		if(sum==k)
+			maxi=max(maxi,j-i+1);
+
+		if(mp.find(sum-k)!=mp.end())
+			maxi = max(maxi,j-(mp[sum-k].back())[1]+1);
+		
+		mp[sum].push_back({i,j});
+
+		j++;
+
+	}
+
+
+	// for(auto x=mp.begin();x!=mp.end();x++)
+	// {	cout<<x->first<<" -> ";
+   
+
+ //      for(auto xx:x->second)
+ //      	cout<<xx[1]<<" ";
+
+ //      cout<<endl;
+ //     }
+
+     return maxi;
+}
+
+int main()
+{
+	vector<int> nums ={-5, 8, -14, 2, 4, 12};
+
+	int n = nums.size();
+
+int k=-5;
+	cout<<LongestSubarrayWithsumk(nums,n,k);
+}
+
+
+
+**********************************************************************************************
+
+Approach 2:
+
+# include <bits/stdc++.h>
+using namespace std;
+
+int LongestSubarraySumK(vector<int> &nums,int target)
+{
+    int sum=0;
+    
+    unordered_map<int,int> mp;
+    int maxi=0;
+    mp[sum]=-1;
+    
+    for(int i=0;i<nums.size();i++)
+    {
+        sum+=nums[i];
+        
+        if(mp.find(sum-target)!=mp.end())
+        maxi=max(maxi,i-mp[sum-target]);
+        
+        if(mp.find(sum)==mp.end())
+        mp[sum]=i;
+    }
+    
+    return maxi;
+}
+
+int main()
+{
+    vector<int> nums = {-1, 2, 3};
+    
+    int target_sum = 6;
+    
+    cout<<LongestSubarraySumK(nums,target_sum);
+}

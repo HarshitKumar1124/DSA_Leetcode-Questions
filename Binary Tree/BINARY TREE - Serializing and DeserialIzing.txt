@@ -1,0 +1,98 @@
+
+
+
+BINARY TREE - Serializing and DeserialIzing
+
+Serializing means converting Tree in vector or string
+
+Deserializing means Converting that vector or string back to Original Binary Tree
+
+***********************************************
+
+class Solution
+{
+    public:
+    //Function to serialize a tree and return a list containing nodes of tree.
+    vector<int> serialize(Node *root) 
+    {
+        if(root==NULL)
+        return {};
+        
+        
+        queue<Node*> q;
+        q.push(root);
+        vector<int> ans;
+        
+        while(q.size()!=0)
+        {
+           int size = q.size();
+           
+           while(size--)
+           {
+                Node* temp = q.front();
+            
+            q.pop();
+            
+            if(temp!=NULL)
+            {
+                q.push(temp->left);
+                q.push(temp->right);
+            }
+            
+            if(temp==NULL)
+            ans.push_back(-1);
+            else
+            ans.push_back(temp->data);
+            
+           }
+        }
+        
+        return ans;
+    }
+    
+    //Function to deserialize a list and construct the tree.
+    Node * deSerialize(vector<int> &A)
+    {
+       if(A.size()==0)
+       return NULL;
+       
+       Node* root = new Node(A.front());
+       queue<Node*> q;
+       q.push(root);
+       
+       A.erase(A.begin());
+       
+       while(q.size()!=0)
+       {
+           int size = q.size();
+           
+           while(size--)
+           {
+               Node* temp = q.front();
+               q.pop();
+               
+               if(A.front()!=-1)
+               {
+                   temp->left = new Node(A.front());
+                   q.push(temp->left);
+               }
+               else
+               temp->left=NULL;
+               A.erase(A.begin());
+               
+               
+               if(A.front()!=-1)
+               {
+                   temp->right = new Node(A.front());
+                   q.push(temp->right);
+               }
+               else
+               temp->right = NULL;
+               A.erase(A.begin());
+           }
+       }
+       
+       return root;
+    }
+
+};

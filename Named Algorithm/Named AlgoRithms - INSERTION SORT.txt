@@ -1,0 +1,90 @@
+
+
+Named AlgoRithms : INSERTION SORT 
+
+Time Complexity : O(n^2)
+
+***************************
+
+Approach1 : Iterative
+
+***********************
+
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+void Print(vector<int> &v)
+{
+    for(auto x:v)
+    cout<<x<<" ";
+    cout<<endl;
+}
+
+
+void InsertionSort(vector<int> &v)
+{
+    for(int i=0;i<v.size();i++)
+    {
+        for(int j=i;j>=0;j--)
+        {
+            if(v[j]>v[i])
+            {
+                swap(v[j],v[i]);
+                i=j;
+            }
+        }
+    }
+}
+
+
+
+
+int main()
+{
+    vector<int> v={2,5,1,4,2,3,6,6,9,5,7};
+    
+
+   int n = v.size();
+   
+    
+    //InsertionSort  O(n^2)
+    
+    InsertionSort(v);
+    Print(v);
+    
+   
+}
+
+
+**********************************
+Approach2: Recursive
+
+**********************
+
+void InsertionSortRec(vector<int> &v,int idx)
+{
+    if(idx==0)
+    return;
+    
+    InsertionSortRec(v,idx-1);
+    
+    for(int j=idx;j>=0;j--)
+    if(v[j]>v[idx])
+    {
+        swap(v[j],v[idx]);
+        idx=j;
+    }
+}
+
+
+NOTE: This Algorithm is Also Stable Algorithm
+
+Best Cast : Already Sorted Ascending Order
+
+Worst Case : Descending Sorted
+
+It is also example of INPLACE Algorithm with principle of Incremental Paradigms
+
+

@@ -1,0 +1,143 @@
+
+
+
+
+String - 1081. Smallest Subsequence of Distinct Characters
+
+**************************************************
+
+class Solution {
+    
+    
+    // why here BackTracking is gIving TLE ??? 
+    
+  
+    
+    
+//     string mini = "}";
+//     void SDC(string &s,int idx,int &unique,unordered_map<char,int> &mp,string &taken)
+//     {
+//          if(taken.size()==unique)
+//             {
+//                 // cout<<taken<<endl;
+//                 mini = min(mini,taken);
+//                 return;
+//             }
+        
+        
+//         for(int i=idx;i<s.size();i++)
+//         {
+//             if(mp[s[i]]!=0)
+//             {
+//                 // cout<<"{"<<idx<<","<<i<<"} ";
+//                 mp[s[i]]--;
+//                taken.push_back(s[i]);
+               
+//                 SDC(s,i+1,unique,mp,taken);
+//                 mp[s[i]]++;
+//                 taken.pop_back();
+//             }
+//         }
+//     }
+    
+    
+    
+    //CONCEPT OF Pruning Using STACK
+    
+    // https://www.youtube.com/watch?v=j313ttNJjo0
+    
+    
+    string BuildString(stack<char> stk)
+    {
+        string temp="";
+        while(stk.size()!=0)
+        {
+            temp.insert(temp.begin(),1,stk.top());
+            stk.pop();
+        }
+        
+        return temp;
+    }
+    
+    
+    string SDC_stackApproch(string &s,int n,int m,unordered_map<char,int> &frequency,unordered_map<char,bool> &visited )
+    {
+        stack<char> stk;
+        
+        for(int i=0;i<n;i++)
+        {
+          
+            if(visited[s[i]]==false and stk.size()==0)
+                stk.push(s[i]),visited[s[i]]=true,frequency[s[i]]--;
+            else if(visited[s[i]]==false and stk.top()<s[i])
+                stk.push(s[i]),visited[s[i]]=true,frequency[s[i]]--;
+            else if(visited[s[i]]==false and stk.top()>=s[i] and frequency[stk.top()]==0)
+                stk.push(s[i]),visited[s[i]]=true,frequency[s[i]]--;
+            else if(visited[s[i]]==false)
+            {
+                while(stk.size()!=0 and frequency[stk.top()]!=0 and stk.top()>=s[i])
+                    visited[stk.top()]=false,stk.pop();
+                //frequency of stk.top() increase nahi karege while popping kyuki next time Kya pata last element k time bhi extra value lleft dikhayega:  Consider this EXAMPLE - // "cdadabcc"
+                
+                stk.push(s[i]);
+                visited[s[i]]=true;
+                frequency[s[i]]--;
+            }
+            else if(visited[s[i]]==true)
+            {
+                frequency[s[i]]--;    // Consider case : "bcbcbcababa"
+            }
+                
+            
+        }
+        
+       
+        
+        
+        //String Building
+         string ans = BuildString(stk);
+        
+        return ans;
+        
+    }
+    
+    
+    
+    
+     
+public:
+    string smallestSubsequence(string s) {
+        
+//         int n = s.size();
+        
+//         unordered_map<char,int> mp;
+        
+//         for(auto x:s)
+//             if(mp.find(x)==mp.end())
+//                 mp[x]++;
+        
+//         int unique = mp.size();
+        
+//         string taken="";
+//         unordered_map<char,int> visited;
+//         // SDC(s,0,unique,mp,taken,visited);
+        
+        
+        
+        int n = s.size();
+        unordered_map<char,int> frequency;
+        
+        for(auto x:s)
+            frequency[x]++;
+        
+        int m = frequency.size();
+        
+        unordered_map<char,bool> visited;
+        
+        
+        
+        
+        return SDC_stackApproch(s,n,m,frequency,visited);;
+        
+    }
+};

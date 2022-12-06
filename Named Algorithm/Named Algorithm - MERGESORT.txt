@@ -1,0 +1,91 @@
+
+
+
+Named Algorithm : MERGESORT
+
+Time Complexity : O(nLogn)
+
+*****************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+void Print(vector<int> &v)
+{
+    for(auto x:v)
+    cout<<x<<" ";
+    cout<<endl;
+}
+
+
+void Merge(vector<int> &v,int start,int mid,int end)
+{
+    int n1 = mid-start+1;
+    int n2 = end-mid;
+    
+   vector<int> vnew(n1+n2);
+    
+    int i=start,j=mid+1;
+    
+    int m=0;
+    
+    while(i<=mid and j<=end)
+    {
+        if(v[i]<=v[j])
+        vnew[m++]=v[i],i++;
+        else if(v[i]>v[j])
+        vnew[m++]=v[j++];
+        
+    }
+    
+    while(i<=mid)
+        vnew[m++] = v[i++];
+    
+    while(j<=end)
+    vnew[m++] = v[j++];
+    
+    
+    for(int x = start;x<=end;x++)
+    {
+        v[x]=vnew[x-start];
+    }
+    
+    
+}
+
+void MergeSort(vector<int> &v,int start,int end)
+{
+    
+    if(start<end)
+    {
+        int mid = (end-start)/2 + start;
+        
+        MergeSort(v,start,mid);
+        MergeSort(v,mid+1,end);
+        Merge(v,start,mid,end);
+    }
+}
+
+int main()
+{
+    vector<int> v={2,5,1,4,2,3,6,6,9,5,7};
+    
+
+   int n = v.size();
+    
+    //MergeSort O(nLogn)
+    MergeSort(v,0,n-1);
+    Print(v);
+    
+}
+
+
+
+Note : Merge Sort is STABLE but Non INPLACE Algorithm
+
+How can we make Merge sort more efficient?
+Merge sort can be made more efficient by replacing recursive calls
+with Insertion sort for smaller array sizes, where the size of the 
+remaining array is less or equal to 43 as the number of operations
+required to sort an array of max size 43 will be less in Insertion sort
+as compared to the number of operations required in Merge sort. 

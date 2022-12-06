@@ -1,0 +1,96 @@
+
+
+
+
+Recursion : Combination 
+
+
+*******************************************
+
+class Solution {
+    
+    vector<vector<int>> ans;
+    
+    
+    //Code of this code is exponential... But we can use BackTracking to reduce complexity
+    
+    
+    // ********************************************************************************************
+    
+    
+    // MoreOver Backtracking doesn't create Brances like that in recursion at every level..
+    
+    //Thus, Memory Complexity of Recursion is much more vast than the Backing Tracking as in backtracking a linear stack is maintained every time without branchs at everyLevel of stack.
+    
+    // **********************************************************************************************
+    
+    
+    
+    
+    
+    
+//     void Combination(vector<int>&nums,int n,int k,vector<int> output)
+//     {
+        
+//         if(k==0)
+//         {
+//             ans.push_back(output);
+//             return;
+//         }
+        
+//         if(n==0)
+//         return ;
+        
+        
+        
+        
+//         if(k)
+//         {
+//             Combination(nums,n-1,k,output);
+//             vector<int> output1 = output;
+//             output1.push_back(nums[n-1]);
+//             Combination(nums,n-1,k-1,output1);
+//         }
+        
+//     }
+    
+    
+    
+    
+    
+    //Time Complexity is Polynomial... O(n*k);
+    
+    void CombinationBackTrack(vector<int> &nums,int currentIdx,int k,vector<int> Subset,int &n)
+    {
+        if(k==0)
+        {
+            ans.push_back(Subset);
+            return;
+        }  
+        
+        for(int i=currentIdx;i<n;i++)
+        {
+            int element = nums[i];
+            Subset.push_back(nums[i]);
+            CombinationBackTrack(nums,i+1,k-1,Subset,n);
+            Subset.pop_back();
+        }
+    }
+    
+    
+public:
+    vector<vector<int>> combine(int n, int k) {
+        
+        vector<int> nums(n);
+        
+        for(int i=1;i<=n;i++)
+        nums[i-1]=i;
+        
+        
+        // Combination(nums,n,k,{});
+        
+        CombinationBackTrack(nums,0,k,{},n);
+        return ans;
+        
+    }
+};

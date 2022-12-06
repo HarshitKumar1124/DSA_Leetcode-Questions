@@ -1,0 +1,51 @@
+
+
+
+Kadane Algorithm : Recursive Solution ::
+
+***********************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+//divide and Conquer
+
+int maxi=INT_MIN;
+
+
+int Kadane(vector<int> &nums,int start,int end)
+{
+    
+ 
+    
+    if(start==end)
+    return nums[start];
+    
+    if(start<end)
+    {
+        int mid = (end-start)/2 + start;
+        int x1 = Kadane(nums,start,mid-1);
+        
+ 
+        int x2 = Kadane(nums,mid+1,end);
+        
+    
+        maxi=max(maxi,x1+x2+nums[mid]);
+        
+        return maxi;
+    }
+    
+   
+    
+    return 0;
+}
+
+int main()
+{
+    vector<int> nums={5,4,-1,7,8};
+    
+    int n = nums.size();
+   cout<<Kadane(nums,0,n-1);
+    
+  
+}

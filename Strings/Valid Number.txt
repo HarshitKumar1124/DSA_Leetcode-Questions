@@ -1,0 +1,156 @@
+
+
+
+LEETCODE String : 
+
+65. Valid Number --- https://leetcode.com/problems/valid-number/
+
+*****************************************************************
+
+
+class Solution {
+    
+    //https://www.youtube.com/watch?v=0qac3ngAZmE
+    
+    bool DigitValid(string &s)
+    {
+        for(auto x:s)
+            if(isdigit(x))
+                return true;
+        
+        return false;
+    }
+    
+    bool MarksValid(string &s)
+    {
+        
+        int n = s.size();
+        
+        int count_plus = count(s.begin(),s.end(),'+');
+        
+        if(count_plus>2)
+            return false;
+        
+        int count_neg = count(s.begin(),s.end(),'-');
+        
+        if(count_neg>2)
+            return false;
+        
+        if(s[n-1]=='+' or s[n-1]=='-')
+            return false;
+        
+        for(int i=0;i<n;i++)
+        {
+            if((s[i]=='+' or s[i]=='-') and i!=0)
+            {
+                if(s[i-1]!='E' and s[i-1]!='e')
+                    return false;
+            }
+        }
+        
+        
+        return true;
+        
+        
+    }
+    
+    bool DotValid(string &s)
+    {
+        int n = s.size();
+        
+        int countdot = count(s.begin(),s.end(),'.');
+        
+        if(countdot>=2)
+            return false;
+        
+        bool Epresent=false;
+        
+        for(auto x:s)
+        {
+            if(x=='.' and Epresent==true)
+                return false;
+            else if(x=='e' or x=='E')
+                Epresent=true;
+        }
+        
+        
+        return true;
+    }
+    
+    
+    bool LetterValid(string &s)
+    {
+        int n = s.size();
+        
+        bool NumberPresence=false;
+        for(auto x:s)
+        {
+            if(isdigit(x) )
+                NumberPresence=true;
+            
+            if(isalpha(x))
+            {
+                if(x!='e' and x!='E')
+                    return false;
+                else if(NumberPresence==false)
+                    return false;
+            }
+        }
+        
+        if(s[n-1]=='e' || s[n-1]=='E')
+            return false;
+        
+        int countE = count(s.begin(),s.end(),'E');
+        int counte = count(s.begin(),s.end(),'e');
+        
+        if(counte + countE>=2)
+            return false;
+        
+        return true;
+    }
+    
+public:
+    bool isNumber(string s) {
+        
+        //Valid number must have
+        
+//         1. Digits
+            
+//         2. Marks of + and - 
+            
+//             number is invalid if  -- count of + or - are greater than 2 OR +/- is at end of string OR if +/- is in mid but prev element is not E/e
+        
+        
+        // 3 .  Dot
+        
+                // number is invalid if --- count of . is more than equal to 2 OR if . is at end of string and any of its prev element is E/e OR string is only .
+        
+        // 4. It only has letter E/e
+        
+                // number is invalid if letter other than E/e is present
+                // number is invalid if letter e/E is present at last of string
+                // if count of e>=2
+        
+        bool val1 = DigitValid(s);
+        
+        if(!val1)
+        return false;
+        
+        val1 = MarksValid(s);
+        
+        if(!val1)
+        return false;
+        
+        val1 = DotValid(s);
+        
+        if(!val1)
+        return false;
+        
+        val1 = LetterValid(s);
+        
+        if(!val1)
+        return false;
+        
+        return true;
+    }
+};

@@ -1,0 +1,102 @@
+  
+  
+  
+  
+GRAPH -- TravelMan Spanning Path 
+
+Also Printing Whole possible Hamiltonian Paths with pathcost
+
+*************************************************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+int mini = INT_MAX;
+
+vector<vector<int>> HamiltonianPath;
+vector<int> HamiltonianPathCost;
+
+void Print(vector<int> &v,int cost)
+{
+    for(auto x:v)
+    cout<<x<<" ";
+    cout<<" -> "<<cost<<endl;
+}
+
+void CreateEdge(int u,int v,int cost,vector<pair<int,int>> Graph[])
+{
+   Graph[u].push_back(make_pair(v,cost));
+   Graph[v].push_back(make_pair(u,cost));
+   
+}
+
+void DFS(vector<pair<int,int>> Graph[],int &N,int src_element,vector<int> &visited,vector<int> Path,int cost,int counter)
+{
+    if(counter==N)
+    {
+       HamiltonianPath.push_back(Path);
+       HamiltonianPathCost.push_back(cost);
+       Print(Path,cost);
+        return;
+    }
+    
+    visited[src_element]=1;
+    
+    for(auto x:Graph[src_element])
+    if(!visited[x.first])
+    {
+        vector<int> temp = Path;
+        temp.push_back(x.first);
+        DFS(Graph,N,x.first,visited,temp,cost + x.second,counter+1);
+    }
+    
+    
+    visited[src_element]=0;
+    
+    
+}
+
+
+
+
+
+int main()
+{
+    int N=4;
+    
+    vector<pair<int,int>> Graph[N];
+    
+    vector<vector<int>> Edges={{0,1,10},{0,2,15},{0,3,20},{1,3,25},{3,2,30},{1,2,35}};
+    
+    vector<vector<int>> Dist(N,vector<int>(N,0));
+    
+    
+    
+    for(auto x:Edges)
+    Dist[x[0]][x[1]]=x[2] ,Dist[x[1]][x[0]]=x[2], CreateEdge(x[0],x[1],x[2],Graph);
+    
+    vector<int> visited(N,0);
+    int counter=1;
+    
+    
+    cout<<"All Hamiltonian Path with Respective Path Cost ( one way, i.e. Without Adding last and start edge  ) Are : \n";
+    
+    for(int i=0;i<N;i++)
+        DFS(Graph,N,i,visited,{i},0,counter);
+        
+        
+        for(int i=0;i<HamiltonianPath.size();i++)
+        {
+            vector<int> xyz_path = HamiltonianPath[i];
+            int start = xyz_path[0];
+            int end = xyz_path[xyz_path.size()-1];
+            
+            
+            
+            mini = min(mini,HamiltonianPathCost[i] + Dist[start][end]);
+        }
+
+    
+    cout<<"\nMinimum Path Cost Travel Spanning Path Round Trip Is : "<<mini;
+}

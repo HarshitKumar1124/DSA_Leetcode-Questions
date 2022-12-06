@@ -1,0 +1,59 @@
+
+
+
+Recursion : Sorting Array
+
+Space Complexity : O(N)
+
+****************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+void Print(vector<int> num)
+{
+    for(auto x:num)
+    cout<<x<<" ";
+    cout<<endl;
+}
+
+void Insert(vector<int> &num,int start,int end)
+{
+    if(start>=end)
+    return;
+    
+    if(num[start]>num[start+1])
+    swap(num[start],num[start+1]);
+    
+    Insert(num,start+1,end);
+}
+
+void Sort(vector<int>&num,int start,int end)
+{
+    
+    if(start>=end)
+    return;
+   
+   int first = num[start];
+   
+   Sort(num,start+1,end);
+   
+   Insert(num,start,end);
+   
+   
+}
+
+
+
+int main()
+{
+    vector<int> num={11,2,6,3,5,86,4,2,5,6};
+    
+    int n = num.size();
+    
+    Print(num);
+    
+    Sort(num,0,n-1);
+    
+    Print(num);
+}

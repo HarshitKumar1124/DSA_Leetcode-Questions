@@ -1,0 +1,110 @@
+
+
+
+Window Sliding Question: LEETCODE
+
+***********************************
+
+Fixed Window Size:
+
+***********************************************************************************************************************************************************************
+
+Find maximum (or minimum) sum of a subarray of size k -- https://www.geeksforgeeks.org/find-maximum-minimum-sum-subarray-size-k/
+
+First negative integer in every window of size k -- https://www.geeksforgeeks.org/first-negative-integer-every-window-size-k/
+
+Find Occurence Of Anagrams -- https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1
+
+
+
+53. Maximum Subarray -- https://leetcode.com/problems/maximum-subarray/
+
+  **** Look Recursive and Iterative Approach of Kadane Algorithm
+  
+  
+
+187. Repeated DNA Sequences -- https://leetcode.com/problems/repeated-dna-sequences/
+
+219. Contains Duplicate II -- https://leetcode.com/problems/contains-duplicate-ii/
+
+2099. Find Subsequence of Length K With the Largest Sum -- https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/
+
+239. Sliding Window Maximum -- https://leetcode.com/problems/sliding-window-maximum/
+
+242. Valid Anagram -- https://leetcode.com/problems/valid-anagram/
+
+438. Find All Anagrams in a String -- https://leetcode.com/problems/find-all-anagrams-in-a-string/
+
+Subarray Sum Equals K -- https://www.youtube.com/watch?v=cyu_nuW5utA&list=PL_z_8CaSLPWeM8BDJmIYDaoQ5zuwyxnfj&index=7 Aditya Verma - Handle Only Positive Integers
+
+560. Subarray Sum Equals K -- https://leetcode.com/problems/subarray-sum-equals-k/  (valid for negatives also ) 
+
+
+******************* 480. Sliding Window Median  --- https://leetcode.com/problems/sliding-window-median/  VERY VERY VERY VERY UNIQUE TECHNIQUE 
+
+
+
+
+Variable Window Size :
+
+***************************************************************************************************************************************************************************
+
+Longest Sub-Array with Sum K -- https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
+
+9. Longest Substring With K Unique Character -- https://practice.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1
+
+3. Longest Substring Without Repeating Characters -- https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+209. Minimum Size Subarray Sum -- https://leetcode.com/problems/minimum-size-subarray-sum/
+
+1239. Maximum Length of a Concatenated String with Unique Characters -- https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/
+
+76. Minimum Window Substring -- https://leetcode.com/problems/minimum-window-substring/
+
+***** Constrained Subsequence Sum
+
+https://leetcode.com/problems/constrained-subsequence-sum/ --VERY IMPORTANT
+
+
+
+128. Longest Consecutive Sequence -- https://leetcode.com/problems/longest-consecutive-sequence/
+
+1004. Max Consecutive Ones III -- https://leetcode.com/problems/max-consecutive-ones-iii/         OR          https://practice.geeksforgeeks.org/problems/longest-consecutive-1s-1587115620/1
+
+2024. Maximize the Confusion of an Exam (IV) -- https://leetcode.com/problems/maximize-the-confusion-of-an-exam/
+
+424. Longest Repeating Character Replacement -- https://leetcode.com/problems/longest-repeating-character-replacement/
+
+
+
+
+Median in a row-wise sorted Matrix -- https://practice.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1  VERY VERY IMPORTANT
+
+
+
+****** 395. Longest Substring with At Least K Repeating Characters --- https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/  --- very very IMPORTANT
+
+***** 30. Substring with Concatenation of All Words --- https://leetcode.com/problems/substring-with-concatenation-of-all-words/  -- IMPORTANT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

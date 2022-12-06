@@ -1,0 +1,200 @@
+
+
+08-09-2022
+
+**********
+
+
+
+
+Matrix Question LEETCODE 
+
+
+*****************************
+
+54. Spiral Matrix -- https://leetcode.com/problems/spiral-matrix/
+
+59. Spiral Matrix II -- https://leetcode.com/problems/spiral-matrix-ii/
+
+885. Spiral Matrix III -- https://leetcode.com/problems/spiral-matrix-iii/   VERY VERY IMPORTANT     https://www.youtube.com/watch?v=0qep3f9cqVs
+
+74. Search a 2D Matrix -- https://leetcode.com/problems/search-a-2d-matrix/
+
+240. Search a 2D Matrix II -- https://leetcode.com/problems/search-a-2d-matrix-ii/
+
+
+
+SubArray Question LEETCODE
+
+*****************************
+
+128. Longest Consecutive Sequence -- https://leetcode.com/problems/longest-consecutive-sequence/
+
+1004. Max Consecutive Ones III -- https://leetcode.com/problems/max-consecutive-ones-iii/         OR          https://practice.geeksforgeeks.org/problems/longest-consecutive-1s-1587115620/1
+
+2024. Maximize the Confusion of an Exam (IV) -- https://leetcode.com/problems/maximize-the-confusion-of-an-exam/
+
+424. Longest Repeating Character Replacement -- https://leetcode.com/problems/longest-repeating-character-replacement/
+
+Median in a row-wise sorted Matrix -- https://practice.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1  VERY VERY IMPORTANT
+
+
+
+
+
+
+
+#####################################################################################################################################################################
+
+09/09/2022
+
+*************
+
+
+Dynamic Programming LEETCODE
+
+*******************************
+
+300. Longest Increasing Subsequence -- https://leetcode.com/problems/longest-increasing-subsequence/
+
+673. Number of Longest Increasing Subsequence -- https://leetcode.com/problems/number-of-longest-increasing-subsequence/
+
+334. Increasing Triplet Subsequence -- https://leetcode.com/problems/increasing-triplet-subsequence/
+
+646. Maximum Length of Pair Chain -- https://leetcode.com/problems/maximum-length-of-pair-chain/
+
+72. Edit Distance -- https://leetcode.com/problems/edit-distance/
+
+712. Minimum ASCII Delete Sum for Two Strings -- https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
+
+
+
+
+
+
+########################################################################################################################################################################
+
+11-09-2022
+
+************
+
+
+Array and Vectors LEETCODE
+
+***************************
+
+56. Merge Intervals -- https://leetcode.com/problems/merge-intervals/
+
+57. Insert Interval -- https://leetcode.com/problems/insert-interval/  --- VERY IMPORTANT ITERATIVE MERGE INTERVAL CODE
+
+495. Teemo Attacking Poison -- https://leetcode.com/problems/teemo-attacking/
+
+
+
+
+
+Matrix : 
+
+*********
+
+485. Max Consecutive Ones -- https://leetcode.com/problems/max-consecutive-ones/
+
+Row with max 1s -- https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1
+
+Sorted matrix -- https://practice.geeksforgeeks.org/problems/sorted-matrix2333/1
+
+378. Kth Smallest Element in a Sorted Matrix -- https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/ -- VERY IMPORTANT 
+
+85. Maximal Rectangle -- https://leetcode.com/problems/maximal-rectangle/        ---- IMPORTANT SHORT CODE OF NSR NSL
+
+
+
+
+Searching & Sorting
+
+*********************
+
+169. Majority Element -- https://leetcode.com/problems/majority-element/
+
+229. Majority Element II -- https://leetcode.com/problems/majority-element-ii/
+
+2404. Most Frequent Even Element -- https://leetcode.com/problems/most-frequent-even-element/      Requirement of initialising vector of pairs from map
+
+347. Top K Frequent Elements -- https://leetcode.com/problems/top-k-frequent-elements/
+
+451. Sort Characters By Frequency  -- https://leetcode.com/problems/sort-characters-by-frequency/   VERY IMPORTANT    -- Use OF Insert () in strings
+
+34. Find First and Last Position of Element in Sorted Array -- https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+
+278. First Bad Version  -- https://leetcode.com/problems/first-bad-version/
+
+2055. Plates Between Candles -- https://leetcode.com/problems/plates-between-candles/  --- VERY VERY NICE QUESTION 
+
+2089. Find Target Indices After Sorting Array -- https://leetcode.com/problems/find-target-indices-after-sorting-array/
+
+
+
+
+Dynamic Programming : 
+
+***********************
+
+1425. Constrained Subsequence Sum --- https://leetcode.com/problems/constrained-subsequence-sum/ ---- VERY VERY VERY conceptual 
+
+
+
+
+
+
+
+
+
+###########################################################################################################################################
+
+16-09-2022
+
+************
+
+
+Matrix Leetcode :
+
+********************
+
+
+48. Rotate Image -- https://leetcode.com/problems/rotate-image/
+
+Find a specific pair in Matrix --  https://www.geeksforgeeks.org/find-a-specific-pair-in-matrix/
+
+378. Kth Smallest Element in a Sorted Matrix -- https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
+
+
+
+
+Searching Sorting
+
+*********************
+
+69. Sqrt(x) -- https://leetcode.com/problems/sqrtx/
+
+
+
+
+
+
+Backtracking Problem: 
+
+**************************
+
+Rat In A Maze Problem - https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
+
+
+
+
+
+
+
+
+
+
+#############################################################################################################
+

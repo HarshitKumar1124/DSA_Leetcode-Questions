@@ -1,0 +1,65 @@
+
+
+Window Sliding : Longest Substring With K Unique Character
+
+Time Complexity: O(|S|)
+
+***********************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+int LongestKUniqueCharacter(string &s,int n,int k)
+{
+    int i=0,j=0;
+    unordered_map<char,int> mp;
+    string temp;
+    int maxi = 0;
+    
+    while(j<n)
+    {
+        temp+=s[j];
+       mp[s[j]]++;
+       
+       int size = mp.size();     
+                
+       if(size<k)
+       j++;
+       else if(size==k)
+       {
+           int x = temp.size();
+           maxi = max(maxi,x);
+           j++;
+       }
+       else
+       {
+           //size>k
+           while(mp.size()>k)
+           {
+               mp[s[i]]--;
+               temp.erase(temp.begin());
+               
+               if(mp[s[i]]==0)
+               mp.erase(s[i]);
+               
+               i++;
+           }
+           
+           j++;
+           
+       }
+    }
+    
+    return maxi;
+}
+
+int main()
+{
+    string s="aaaa";
+    
+    int n = s.size();
+    
+    int k=2;
+    
+    cout<<LongestKUniqueCharacter(s,n,k);
+}

@@ -1,0 +1,62 @@
+
+
+
+Permutation Sequences : 
+
+O(N) Time Complexity 
+
+
+https://leetcode.com/problems/permutation-sequence/
+
+https://www.youtube.com/watch?v=wT7gcXLYoao&list=PLgUwDviBIf0rGlzIn_7rsaR2FQ5e6ZOL9&index=19
+
+
+**********************
+
+class Solution {
+public:
+    string getPermutation(int n, int k) {
+        
+        // Normal Generation of permutation gives TLE may be due to stack space consumption
+        
+        //Thus we will use new Approach:
+        
+        string s;
+        
+        for(int i=1;i<=n;i++)
+        s.push_back(i+48);
+        
+    
+        
+        
+        //k==1 then the answer will be string itself;
+        
+        string ans;
+        k=k-1;
+        
+        int fact=1;
+        
+        for(int i=1;i<n;i++)
+            fact=fact*i;
+        
+        while(s.size()!=0)
+        {
+            int times = k/fact;
+            ans.push_back(*(s.begin()+times));
+            s.erase(s.begin()+times);
+            
+            k=k%fact;
+            
+            if(s.size()!=0)
+            fact=fact/s.size();
+        }
+        
+        
+        ans+=s;
+        
+        return ans;
+        
+        
+    }
+};
+

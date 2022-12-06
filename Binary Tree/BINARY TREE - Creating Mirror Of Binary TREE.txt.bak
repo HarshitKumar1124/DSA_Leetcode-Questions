@@ -1,0 +1,96 @@
+
+
+
+BINARY TREE - Creating Mirror Of Binary TREE
+
+**********************************************
+
+Approach : Go to each node and switch the pointer left to point right subtree and vice versa. (except leaf node)
+
+*****************************************************************************************************************
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+class Node{
+   
+    
+    public:
+    
+    Node* left=NULL;
+    Node* right=NULL;
+     
+    int data; 
+    Node(int val)
+    {
+        data=val;
+    }
+    
+};
+
+
+void Inorder(Node* root)
+{
+    if(root!=NULL)
+    {
+        Inorder(root->left);
+        cout<<root->data<<" ";
+        Inorder(root->right);
+    }
+}
+
+
+void CreateMirror(Node* root)
+{
+   if(root==NULL || root->left==NULL || root->right==NULL)
+   return;
+   
+   int x = root->left->data;
+   int y = root->right->data;
+   
+   CreateMirror(root->left);
+   
+   CreateMirror(root->right);
+   
+   Node* temp = root->right;
+   Node*temp2 = root->left;
+   
+   root->left=temp;
+   root->right = temp2;
+   
+   
+}
+
+
+int main()
+{
+    
+    Node* root = new Node(5);
+    
+    root->left = new Node(3);
+    
+    root->right = new Node(6);
+    
+    root->left->left = new Node(2);
+    
+    root->left->right = new Node(4);
+    
+    Inorder(root);
+    cout<<endl;
+    
+    CreateMirror(root);
+    
+    Inorder(root);
+    cout<<endl;
+    
+}
+
+
+***********************************************************************************************************
+
+Approach 2 : Reverse the content of Inorder Traversal of tree and assign the tree in Inorder Traversal Again
+
+*************************************************************************************************************
+

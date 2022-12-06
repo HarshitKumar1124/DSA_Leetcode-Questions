@@ -1,0 +1,55 @@
+
+
+
+
+
+Recursion : Combination Sum II
+
+*******************************
+
+
+
+
+class Solution {
+    
+    vector<vector<int>> ans;
+    
+    void Combination(vector<int>&nums,int target,int start,int end,vector<int> Subset)
+    {
+        
+        
+         if(target==0)
+        {
+            ans.push_back(Subset);
+            return;
+        }
+        
+ 
+        unordered_map<int,int>mp;
+        
+        for(int k=start;k<=end;k++)
+        {
+            if(mp.find(nums[k])==mp.end() and nums[k]<=target)
+            {
+                vector<int> SubsetTemp = Subset;
+                SubsetTemp.push_back(nums[k]);
+                mp[nums[k]]++;
+                Combination(nums,target-nums[k],k+1,end,SubsetTemp);
+            }
+        }
+    }
+    
+public:
+    vector<vector<int>> combinationSum2(vector<int>& nums, int target) {
+        
+       sort(nums.begin(), nums.end());
+        
+        int start=0;
+        int n = nums.size();
+        
+        Combination(nums,target,start,n-1,{});
+        
+        return ans;
+        
+    }
+};

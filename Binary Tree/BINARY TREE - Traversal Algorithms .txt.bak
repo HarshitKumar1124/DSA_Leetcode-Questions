@@ -1,0 +1,238 @@
+
+
+BINARY TREE - Traversal Algorithms 
+
+***************************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+class Node {
+
+    public:
+    
+    int data;   
+    Node* left;
+    Node* right;
+    
+    Node(int val)
+    {
+        data=val;
+        left=NULL;
+        right=NULL;
+    }
+};
+
+
+
+
+void BFS(Node* root)
+{
+    if(root==NULL)
+    return;
+    
+    
+    queue<Node*> q;
+    q.push(root);
+    
+    while(q.size()!=0)
+    {
+        Node* temp = q.front();
+        q.pop();
+        
+        if(temp->left!=NULL)
+        q.push(temp->left);
+        
+        if(temp->right!=NULL)
+        q.push(temp->right);
+        
+        cout<<temp->data<<" ";
+    }
+}
+
+
+void Inorder(Node* root)
+{
+    
+    if(root!=NULL)
+    {
+        Inorder(root->left);
+        cout<<root->data<<" ";
+        Inorder(root->right);
+    }
+}
+
+void PreOrder(Node* root)
+{
+    if(root!=NULL)
+    {
+        cout<<root->data<<" ";
+        PreOrder(root->left);
+        PreOrder(root->right);
+    }
+}
+
+void PostOrder(Node* root)
+{
+    if(root!=NULL)
+    {
+        PostOrder(root->left);
+        PostOrder(root->right);
+        cout<<root->data<<" ";
+        
+    }
+}
+
+
+int main()
+{
+    Node* root  = new Node(10);
+    
+    root->left = new Node(12);
+    
+    root->left->left = new Node(25);
+    
+    root->left->right = new Node(30);
+    
+    root->right = new Node(15);
+    
+    root->right->left = new Node(36);
+    
+    
+    
+    // Traversing Tree
+    
+    Inorder(root);
+    cout<<endl;
+    
+    PreOrder(root);
+    cout<<endl;
+    
+    PostOrder(root);
+    cout<<endl;
+    
+    cout<<"Level Order Traversal: \n";
+    BFS(root);
+}
+
+
+
+
+
+
+
+
+
+
+In Recursion : f(n) calls 2 recursive calls say f(n-1) and f(n-2) and Thus O(2^n)
+
+But in tree DFS, we make two recursive calls but O(n) time complexity.
+
+Because in Normal Recursion, for N element we have 2 options. Thus height of Binary tree so made is n and thus there is O(2^heightoftree) i.e. O(2^n) as timecomplexity.
+But in case of DFS, Height of binary tree is LOG(n) thus time complexity is O(2^logn) i.e. O(n)
+
+
+
+
+******************************************************************
+Iterative Approch of Traversals
+
+*********************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+class Node{
+   
+    
+    public:
+    
+    Node* left=NULL;
+    Node* right=NULL;
+     
+    int data; 
+    Node(int val)
+    {
+        data=val;
+    }
+    
+};
+
+
+void Inorder(Node* root)
+{
+    
+    stack<Node*> stk;
+    
+    while(stk.size()!=0 || root!=NULL)
+    {
+        if(root!=NULL)
+        {
+            stk.push(root);
+            root=root->left;
+        }
+        else
+        {
+            Node* temp = stk.top();
+            stk.pop();
+            
+            cout<<temp->data<<" ";
+            root=temp->right;
+        }
+    }
+    
+    cout<<endl;
+}
+
+
+void PreOrder(Node* root)
+{
+    stack<Node*> stk;
+    
+    while(stk.size()!=0 || root!=NULL)
+    {
+        
+        if(root!=NULL)
+        {
+            cout<<root->data<<" ";
+            stk.push(root);
+            root=root->left;
+        }
+        else
+        {
+            Node* temp = stk.top();
+            stk.pop();
+            root=temp->right;
+        }
+    }
+    
+    cout<<endl;
+}
+
+
+
+int main()
+{
+    
+    Node* root = new Node(5);
+    
+    root->left = new Node(3);
+    
+    root->right = new Node(6);
+    
+    root->left->left = new Node(2);
+    
+    root->left->right = new Node(4);
+    
+    cout<<"Iterative Inorder Traversal \n";
+    Inorder(root);
+    
+    cout<<"Iterative PreOrder Traversal \n";
+    PreOrder(root);
+    
+    cout<<"Iterative PostOrder Traversal \n";
+    PostOrder(root);
+    
+}

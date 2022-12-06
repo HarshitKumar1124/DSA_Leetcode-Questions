@@ -1,0 +1,113 @@
+
+
+
+
+BackTracking :
+
+Question : Find shortest safe route in a matrix
+
+https://practice.geeksforgeeks.org/problems/find-shortest-safe-route-in-a-matrix/0?page=1&sortBy=newest&query=page1sortBynewest
+
+***************************************************
+
+Approach 1: Using Backtracking
+
+Time Complexity : O(2^n)
+
+*******************************
+
+
+int ans =INT_MAX;
+    
+    
+    
+    bool IsSafe(int i,int j,vector<vector<int>> &mat)
+    {
+        int n = mat.size();
+        int m = mat[0].size();
+        
+        if(i<0 || i>=mat.size() || j<0 || j>=mat[0].size())
+        return false;
+        
+        bool varU=true,varD=true,varR=true,varL=true;
+        
+       if(i+1<n and mat[i+1][j]==0)
+       varD = false;
+       
+       if(i-1>=0 and mat[i-1][j]==0)
+       varU = false;
+       
+       if(j+1<m and mat[i][j+1]==0)
+       varR = false;
+       
+       if(j-1>=0 and mat[i][j-1]==0)
+       varL = false;
+       
+        
+        return varU and varD and varL and varR;
+    }
+    
+    void SafePath(vector<vector<int>> &mat,int i,int j,int length,vector<vector<bool>> &visited,vector<vector<int>> &DP)
+    {
+    
+        
+        if(j==mat[0].size()-1)
+        {
+            DP[i][j]=min(length,DP[i][j]);
+            return;
+        }
+        
+        
+        
+        
+        visited[i][j]=true;
+        
+        if(IsSafe(i,j+1,mat) and visited[i][j+1]==false)
+        SafePath(mat,i,j+1,length+1,visited);
+        
+        if(IsSafe(i,j-1,mat) and visited[i][j-1]==false)
+        SafePath(mat,i,j-1,length+1,visited);
+        
+        if(IsSafe(i+1,j,mat) and visited[i+1][j]==false)
+        SafePath(mat,i+1,j,length+1,visited);
+        
+        if(IsSafe(i-1,j,mat) and visited[i-1][j]==false)
+        SafePath(mat,i-1,j,length+1,visited);
+        
+        visited[i][j] = false;
+        
+        
+        
+        
+    }
+	
+	
+	
+	 int findShortestPath(vector<vector<int>> &mat)
+    {
+        int n = mat.size();
+        int m = mat[0].size();
+        
+        vector<vector<bool>> visited(n,vector<bool>(m,false));
+        
+        vector<vector<int>> DP(n,vector<int>(m,INT_MAX));
+       
+       for(int i=0;i<n;i++)
+       {
+           if(IsSafe(i,0,mat))
+               SafePath(mat,i,0,1,visited,DP);
+             
+       }
+       
+       if(ans!=INT_MAX)
+       return ans;
+       
+       return -1;
+    }
+	
+######################################################################################################
+
+Approach 2: Using BFS()
+
+************************
+

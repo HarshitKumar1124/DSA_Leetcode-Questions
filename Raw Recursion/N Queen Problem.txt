@@ -1,0 +1,56 @@
+
+
+
+N Queen Problem: 
+
+******************
+
+class Solution {
+    
+    vector<vector<string>> ans;
+    
+    void Solve(int Col,vector<string> board,vector<int> &UpperDiagonal,vector<int> &leftrow,vector<int> &LowerDiagonal,int &n)
+    {
+        if(Col==n)
+        {
+            ans.push_back(board);
+            return;
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            if(UpperDiagonal[n-1 + Col-i]==0 and LowerDiagonal[i+Col]==0 and leftrow[i]==0)
+            {
+                UpperDiagonal[n-1 + Col-i]=1;
+                LowerDiagonal[i+Col]=1;
+                leftrow[i]=1;
+                board[i][Col]='Q';
+                Solve(Col+1,board,UpperDiagonal,leftrow,LowerDiagonal,n);
+                UpperDiagonal[n-1 + Col-i]=0;
+                LowerDiagonal[i+Col]=0;
+                leftrow[i]=0;
+                board[i][Col]='.';
+                
+            }
+        }
+    }
+    
+public:
+    vector<vector<string>> solveNQueens(int n) {
+        
+        
+        vector<string> board(n);
+        
+        string str(n,'.');
+        
+        for(int i=0;i<n;i++)
+            board[i]=str;
+        
+        vector<int> leftRow(n,0) , UpperDiagonal(2*n-1,0) , LowerDiagonal(2*n-1,0);
+        
+        Solve(0,board,UpperDiagonal,leftRow,LowerDiagonal,n);
+        
+        return ans;
+        
+    }
+};

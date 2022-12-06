@@ -1,0 +1,109 @@
+
+
+
+
+
+
+STRING : 1573. Number of Ways to Split a String
+
+***************************************************
+
+
+Approach 1: Backtracking 
+
+Time Complexity : O(n*k)
+
+But Memory Complexity : auxilary stack space O(n)
+
+****************************
+
+class Solution {
+   
+    
+    int countans=0;
+    
+    void Function(string &s,int &n,int k,int idx,int prevcount)
+    {
+        // cout<<"-"<<idx<<".."<<prevcount<<"-";
+        if(idx==n)
+        {
+            if(k==0)
+            {
+                string ss = s.substr(idx);
+                // cout<<ss;
+                countans++;
+                // cout<<" count = "<<countans<<endl;
+            }
+            
+            return;
+        }
+        
+
+        
+       if(k==1)
+       {
+           int counter = count(s.begin()+idx,s.end(),'1');
+           
+           if(prevcount==counter)
+           {
+               countans++;
+               // cout<<s.substr(idx)<<" count = "<<countans<<endl;
+               
+           }
+           
+           return;
+       }
+        int prevtemp;
+        
+        for(int i=idx;i<n;i++)
+        {
+            string left = s.substr(idx,i-idx+1);
+    
+            int count1 = count(left.begin(),left.end(),'1');
+           
+            
+            prevtemp=count1;
+            
+            if(prevcount!=0 and count1==prevcount)
+            {
+                // cout<<" "<<left<<" ";
+                Function(s,n,k-1,i+1,count1);
+            }
+            else if(prevcount==0 and count1==0)
+                continue;
+            else if(prevcount==0 and count1!=0)
+            {
+                // cout<<" "<<left<<" ";
+                Function(s,n,k-1,i+1,prevtemp);
+            }
+                
+            
+        }
+        
+    }
+    
+public:
+    int numWays(string s) {
+        int n = s.size();
+        
+        int count1 = count(s.begin(),s.end(),'1');
+    
+        
+        if(count1%3!=0) 
+            return 0;
+        
+               int k=3;
+        
+        if(!count1)
+        {
+           return (n-1)*(n-2)/2;   
+        }//bell number of N for k partisian will not be done as that bell number is for n distinct numbers
+        
+ 
+        Function(s,n,k,0,0);
+        
+        // cout<<countans;
+        
+        return countans;
+    }
+};

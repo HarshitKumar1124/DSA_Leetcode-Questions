@@ -1,0 +1,53 @@
+
+
+
+Recursion : Palindromic Partisioning
+
+Using Technique of Front Partisioning
+
+**************************************
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+bool IsPalindrome(string s)
+{
+    string s1 = s;
+    reverse(s1.begin(),s1.end());
+    
+    return (s1==s);
+}
+
+void FrontPartisioning(string &s,int start,int n)
+{
+
+    if(start==n)
+    {
+        cout<<endl;
+        return;
+    }
+   
+   
+   for(int i=start+1;i<=n;i++)
+   {
+       string left = s.substr(start,i-start);
+       string right = s.substr(i);
+       
+       if(IsPalindrome(left))
+       {
+           cout<<left<<" ";
+           FrontPartisioning(s,i,n);
+       }
+   }
+}
+
+int main()
+{
+    string s ="aab";
+    
+    int n = s.size();
+    
+    FrontPartisioning(s,0,n);
+   
+}

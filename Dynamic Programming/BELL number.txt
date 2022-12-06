@@ -1,0 +1,41 @@
+
+
+
+
+BELL Number :
+
+*************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+int S(int n,int k)
+{
+    if(k==0 || n==0 || k>n)
+    return 0;
+    
+    if(k==n)
+    return 1;
+    
+    
+    return k*S(n-1,k) + S(n-1,k-1);
+}
+
+
+int Bell(int n)
+{
+    
+    
+    int sum=0;
+    
+    for(int i=1;i<=n;i++)
+    sum+=S(n,i);
+    
+    return sum;
+}
+
+int main()
+{
+    for(int i=1;i<11;i++)
+    cout<<Bell(i)<<endl;
+}

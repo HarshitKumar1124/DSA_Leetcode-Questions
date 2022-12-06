@@ -1,0 +1,253 @@
+
+
+
+
+
+Graph : Find Number Of Strongly Connected Components (KosaRaju Algorithm ) : 
+
+*****************************************************
+
+Approach 1: Using BFS()/DFS() 
+
+Time Complexity : O(E*(V+E))
+
+****************************
+
+class Solution
+{
+    
+    void CreateEdge(int u,int v,vector<int> Graph[])
+{
+    Graph[u].insert(Graph[u].begin(),v);
+    
+}
+
+void RemoveEdge(int u,int v,vector<int> Graph[])
+{
+    auto x  = find(Graph[u].begin(),Graph[u].end(),v);
+    Graph[u].erase(x);
+    
+}
+
+
+void BFS(vector<int> Graph[],int n,int element,vector<int>&visited)
+{
+    queue<int> q;
+    q.push(element);
+    visited[element]=1;
+    
+    while(q.size()!=0)
+    {
+        int temp = q.front();
+        q.pop();
+        
+        for(auto x:Graph[temp])
+        {
+            if(!visited[x])
+            {
+                visited[x]=1;
+                q.push(x);
+            }
+        }
+    }
+}
+
+
+int ComponentCount(vector<int> Graph[],int n,vector<int>&indegree)
+{
+    int counter=0;
+    vector<int> visited(n,0);
+    
+    int mini = INT_MAX;
+    int idx;
+    
+    for(int i=0;i<n;i++)
+    {
+        if(mini>indegree[i])
+        {
+            mini = indegree[i];
+            idx=i;
+        }
+    }
+    
+   
+    BFS(Graph,n,idx,visited);
+    bool extra=false;
+    
+    for(int i=0;i<n;i++)
+    {
+        if(!visited[i])
+        {
+            extra++;
+           break;
+        }
+    }
+    
+    if(!extra)
+    return 1;
+    
+    return 2;
+}
+
+
+
+	public:
+
+   
+    int func(int n, vector<int> Graph[])
+    {
+        int bridge=0;
+        vector<int> indegree(n,0);
+         for(int i=0;i<n;i++)
+        {
+            for(auto x:Graph[i])
+            {
+                indegree[x]++;
+            }
+        }
+        
+        
+        
+        for(int i=0;i<n;i++)
+        {
+            for(auto x:Graph[i])
+            {
+                RemoveEdge(i,x,Graph);
+                indegree[x]--;
+                
+                if(ComponentCount(Graph,n,indegree)>1)
+                bridge++;
+                
+                CreateEdge(i,x,Graph);
+                indegree[x]++;
+                
+                // cout<<i<<" "<<x<<" -> "<<bridge<<endl;
+            }
+        }
+        
+        return bridge+1;
+    }
+};
+
+
+
+*****************************************************************************************************
+
+Approach 2 : Using KosaRaju Algorithm 
+
+Time Complexity: O(V+E)
+
+https://www.youtube.com/watch?v=V8qIqJxCioo
+
+***************************
+
+
+class Solution
+{
+    
+    void DFS(vector<int> Graph[],int n,vector<int> &visited,stack<int> &stk,int element)
+    {
+        visited[element]=1;
+        
+        for(auto x:Graph[element])
+        {
+            if(!visited[x])
+            DFS(Graph,n,visited,stk,x);
+        }
+        
+        stk.push(element);
+        
+    }
+    
+    void Toposort(vector<int> Graph[],int &n,stack<int> &stk)
+    {
+        
+        vector<int> visited(n,0);
+        
+        for(int i=0;i<n;i++)
+        {
+            if(!visited[i])
+            DFS(Graph,n,visited,stk,i);
+        }
+        
+    }
+    
+    
+    
+    void BFS(vector<int> NewGraph[],int n,int element,vector<int> &visited)
+    {
+        queue<int> q;
+        q.push(element);
+        visited[element]=1;
+        // cout<<element<<" ";
+        
+        while(q.size()!=0)
+        {
+            int temp = q.front();
+            q.pop();
+            
+            for(auto x:NewGraph[temp])
+            {
+                if(!visited[x])
+                {
+                    visited[x]=1;
+                    // cout<<x<<" ";
+                    q.push(x);
+                }
+            }
+        }
+    }
+    
+	public:
+	//Function to find number of strongly connected components in the graph.
+    int kosaraju(int n, vector<int> Graph[])
+    {
+        //KosaRaju involves steps:
+        
+        //step1 : Do Fake Toposort : Just to get sort the order of finishing time.
+        
+        stack<int> stk;
+        
+        Toposort(Graph,n,stk);
+        
+        //step2 : Transpose The Graph
+        
+        vector<int> NewGraph[n];
+        
+        for(int i=0;i<n;i++)
+        {
+            for(auto x:Graph[i])
+            NewGraph[x].push_back(i);
+        
+        }
+        
+        
+        //step3 : Traverse the Graph with initial starting element as : present in Toposort
+        
+        vector<int> visited(n,0);
+        int counter=0;
+        
+        while(stk.size()!=0)
+        {
+            int element = stk.top();
+            stk.pop();
+            
+            if(!visited[element])
+            {
+                counter++;
+                BFS(NewGraph,n,element,visited);
+                // cout<<endl;
+            }
+            
+        }
+        
+        return counter;
+        
+        
+    }
+};
+
+
+
+KosaRaju Algorithm is used to Print the Strongly Connected Components Present in the Graph.
+

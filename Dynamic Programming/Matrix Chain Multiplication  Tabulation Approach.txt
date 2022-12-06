@@ -1,0 +1,85 @@
+
+
+
+
+Matrix Chain Multiplication : Tabulation Approach : 
+
+Time complexity  :O(N^3)
+
+Invloves Concept of Diagonal Traversal
+
+****************************************************
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    
+    vector<int> v={10, 20, 30};
+    
+    int n = v.size();
+    vector<vector<int>> nums(n,vector<int>(n,-1));
+    
+    
+    //Diagonal filling by length : 
+    
+    for(int L = 0; L<=n-1;L++)
+    {
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(j-i==L)
+                {
+                    if(L==0 || L==1)
+                    nums[i][j]=0;
+                    else
+                    {
+                        int x1_merging = v[i]*v[i+1]*v[j];
+                        int x1_DP_value_ofLminus1Length = nums[i+1][j];
+                        
+                        int x2_merging = v[i]*v[j]*v[j-1];
+                        int x2_DP_value_ofLminus1Length = nums[i][j-1];
+                        
+                        nums[i][j] = min({x1_DP_value_ofLminus1Length+x1_merging , x2_DP_value_ofLminus1Length + x2_merging});
+                        
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    
+    for(auto x:nums)
+    {
+        for(auto xx:x)
+        cout<<xx<<"      ";
+        cout<<endl;
+    }
+}
+
+
+
+
+************************************************************
+
+Diagonal Traversal in O(n^2) approach:
+
+(***********************************
+
+for(int L=0;L<n;L++)
+{
+   
+   for(int i=0;i<n-L;i++)
+    {
+	 int j = i+L;
+	 
+	 cout<<arr[i][j]<<" ";	
+	 
+	  
+    }	
+  
+}

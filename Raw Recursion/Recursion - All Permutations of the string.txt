@@ -1,0 +1,67 @@
+
+
+
+
+Recursion :  All Permutations of the string
+
+Time Complexity : O(n*n!)
+
+
+NOTE: Use of NEXT_PERMUTATION(itr1,itr2) STL Function
+
+**********************************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+vector<string> Permutate(string s)
+{
+    if(s.size()==0)
+    return {""};
+    
+    vector<string> ans;
+    for(int i=0;i<s.size();i++)
+    {
+        char ch = s[i];
+        
+        string leftside = s.substr(0,i);
+        string rightside = s.substr(i+1);
+        
+        string str = leftside+rightside;
+        
+        vector<string> vstr = Permutate(str);
+        
+        for(auto x:vstr)
+        ans.push_back(s[i]+x);
+    }
+    
+    return ans;
+}
+
+
+
+
+
+
+int main()
+{
+    string s="abcd";
+    
+    vector<string> ans = Permutate(s);
+    
+   for(auto x:ans)
+   cout<<x<<" ";
+   
+   
+   
+   cout<<endl;
+   
+   //or we can use this STL function with time _Complex O(n*n!)
+ 
+   cout<<s<<" ";
+   while(next_permutation(s.begin(),s.end())) 
+       cout<<s<<" ";
+   
+}
+

@@ -1,0 +1,101 @@
+
+
+Bit Manipulation - LEETCODE
+
+****************************
+
+Binary representation of a given number -- https://www.geeksforgeeks.org/binary-representation-of-a-given-number/   
+
+** Study of BITSET DATATYPE -- https://www.geeksforgeeks.org/c-bitset-and-its-application/
+
+191. Number of 1 Bits -- https://leetcode.com/problems/number-of-1-bits/  AKA - KarniGhan Algorithm.
+
+190. Reverse Bits -- https://leetcode.com/problems/reverse-bits/    VERY VERY IMPORTANT CONCEPTUAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+231. Power of Two -- https://leetcode.com/problems/power-of-two/submissions/
+
+326. Power of Three -- https://leetcode.com/problems/power-of-three/
+
+342. Power of Four -- https://leetcode.com/problems/power-of-four/
+
+1780. Check if Number is a Sum of Powers of Three -- https://leetcode.com/problems/check-if-number-is-a-sum-of-powers-of-three/
+
+2119. A Number After a Double Reversal -- https://leetcode.com/problems/a-number-after-a-double-reversal/
+
+1359. Count All Valid Pickup and Delivery Options  --- https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/   --- VERY VERY IMPORTANT 
+
+
+136. Single Number (Non Repeating Numbers ) -- https://leetcode.com/problems/single-number/
+
+137. Single Number II -- https://leetcode.com/problems/single-number-ii/    OR   https://www.youtube.com/watch?v=cOFAmaMBVps
+
+260. Single Number III  -- https://leetcode.com/problems/single-number-iii/
+
+268. Missing Number -- https://leetcode.com/problems/missing-number/
+
+389. Find the Difference -- https://leetcode.com/problems/find-the-difference/
+
+41. First Missing Positive -- https://leetcode.com/problems/first-missing-positive/  -- VERY VERY CONCEPTUAL
+
+
+
+
+
+2001. Number of Pairs of Interchangeable Rectangles -- https://leetcode.com/problems/number-of-pairs-of-interchangeable-rectangles/
+
+
+
+**** 1814. Count Nice Pairs in an Array -- https://leetcode.com/problems/count-nice-pairs-in-an-array/
+
+
+
+
+

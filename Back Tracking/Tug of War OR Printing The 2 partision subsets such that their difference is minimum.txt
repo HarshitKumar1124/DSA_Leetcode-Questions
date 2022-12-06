@@ -1,0 +1,68 @@
+
+
+
+BackTracking Question : Tug of War OR Printing The 2 partision subsets such that their difference is minimum
+
+Time Complexity: O(2^n)
+
+*************************
+
+
+
+# include <bits/stdc++.h>
+using namespace std;
+int mini = INT_MAX;
+
+unordered_map<int,vector<int>> mp;
+
+void Solve(vector<int> &nums,int n,int count,vector<int> taken,int sum,int &Total)
+{
+    
+   
+    
+    if(count==0)
+    {
+        mini = min(mini,abs(Total-2*sum));
+        mp[(Total-2*sum)]=taken;
+        return;
+    }
+    
+     if(n==0)
+    return;
+    
+    
+    vector<int> taken1 = taken;
+    taken1.push_back(nums[n-1]);
+    
+    Solve(nums,n-1,count-1,taken1,sum+nums[n-1],Total);
+    
+    Solve(nums,n-1,count,taken,sum,Total);
+    
+    
+    
+}
+
+int main()
+{
+    vector<int> v = {23, 45, -34, 12, 0, 98, -99, 4, 189, -1, 4};
+    
+    int n = v.size();
+    
+    int count = (n+1)/2;
+    
+    vector<int> vec;
+    int sum = accumulate(v.begin(),v.end(),0);
+    Solve(v,n,count,vec,0,sum);
+    
+    cout<<"Minimum difference is: "<<mini<<endl;
+    
+    vector<int> ans = mp[mini];
+    
+    cout<<"\nOne of the subset is: \n";
+    for(auto x:ans)
+    cout<<x<<" ";
+    cout<<endl;
+    
+    
+    
+}

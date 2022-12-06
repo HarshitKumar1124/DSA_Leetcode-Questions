@@ -1,0 +1,58 @@
+
+
+
+RECURSION - LEETCODE :
+
+**************************
+
+1 - Print Numbers from 1 to N
+
+2- Printing Numbers from N to 1
+
+3- Reversing an Array/Strings
+
+4- Sort An Array / Strings
+
+5 - SubsetSum Problem 
+
+6 - 39. Combination Sum -- https://leetcode.com/problems/combination-sum/
+
+** 7 - 40. Combination Sum II -- https://leetcode.com/problems/combination-sum-ii/  --VERY NICE APPROACH OF unique subsets
+
+**77. Combinations -- https://leetcode.com/problems/combinations/ --VERY NICE CONCEPTUAL RESULT -- 
+
+** 1770. Maximum Score from Performing Multiplication Operations -- https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/
+
+      for DP explaination why ot 3d but 2d DP
+
+***    //https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/discuss/2581707/C%2B%2B-or-DP-or-TLE-Solved-or-Related-Problems
+
+
+Print All Permuations of string
+
+** 51. N-Queens -- https://leetcode.com/problems/n-queens/ -- --VERY IMPORTANT TECHNIQUE
+
+*** Solve the Sudoku -- https://practice.geeksforgeeks.org/problems/solve-the-sudoku-1587115621/1 -- VERY VERY IMPORTANT CONCEPTUAL TECHNIQUE
+
+*** m-coloring -- https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1 -- VERY VERY IMPORTANT
+
+** Palindromic Partisioning --                        -- VERY IMPORTANT TECHI=NIQUE OF FrontPartisioning 
+
+** Rate In A Maze Oroblem I 
+
+*** 60. Permutation Sequence -- https://leetcode.com/problems/permutation-sequence/ -- VERY UNIQUE TECHNIQUE VERY VERY IMPORTANT
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+

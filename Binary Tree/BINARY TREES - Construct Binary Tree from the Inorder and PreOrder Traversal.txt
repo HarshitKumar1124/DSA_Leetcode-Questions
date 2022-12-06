@@ -1,0 +1,45 @@
+
+
+
+
+BINARY TREES - Construct Binary Tree from the Inorder and PreOrder Traversal
+
+******************************************************************************
+
+class Solution{
+    public:
+    
+    Node* BuildTree(vector<int> inorder,vector<int> &preorder)
+    {
+        if(inorder.size()==0)
+        return NULL;
+        
+        
+        Node* root = new Node(preorder[0]);
+        
+        int idx = find(inorder.begin(),inorder.end(),preorder[0]) - inorder.begin();
+        
+        vector<int> newInorder(inorder.begin(),inorder.begin()+idx);
+        
+        vector<int> newInorder2(inorder.begin()+idx+1,inorder.end());
+        
+        preorder.erase(preorder.begin());
+        
+        root->left = BuildTree(newInorder,preorder);
+        
+        root->right  =  BuildTree(newInorder2,preorder);
+        
+        
+        return root;
+        
+    }
+    
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        
+        vector<int> inorder(in,in+n);
+        vector<int> preorder(pre,pre+n);
+        return BuildTree(inorder,preorder);
+        
+    }
+};

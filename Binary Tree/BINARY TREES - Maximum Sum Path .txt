@@ -1,0 +1,53 @@
+
+
+
+BINARY TREES : Maximum Sum Path 
+
+*********************************
+
+class Solution {
+  public:
+    
+    
+    
+    int Maxsum(Node*root)
+    {
+        if(root==NULL)
+        return INT_MIN;
+        
+        int x1 = Maxsum(root->left);
+        int x2 = Maxsum(root->right);
+        
+        int ans=root->data;
+        int maxi=ans;
+        
+        if(x1>0)
+        maxi=max(maxi,ans+x1);
+        
+        if(x2>0)
+        maxi = max(maxi,ans+x2);
+        
+        return maxi;
+    }
+    int findMaxSum(Node* root)
+    {
+        if(root==NULL)
+        return INT_MIN;
+       
+       int leftside = Maxsum(root->left);
+       int rightside = Maxsum(root->right);
+       
+       int ans=root->data;
+       
+       if(leftside>0)
+       ans+=leftside;
+       
+       if(rightside>0)
+       ans+=rightside;
+       
+       int x1 = findMaxSum(root->left);
+       int x2 = findMaxSum(root->right);
+       
+       return max({x1,x2,ans});
+    }
+};

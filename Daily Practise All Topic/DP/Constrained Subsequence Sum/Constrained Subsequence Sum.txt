@@ -1,0 +1,54 @@
+
+
+Dynamic Programming: 
+
+***********************
+
+Constrained Subsequence Sum
+
+https://leetcode.com/problems/constrained-subsequence-sum/
+
+***************************
+
+class Solution {
+    
+// void Print(vector<int> &nums)
+// {
+//     for(auto x:nums)
+//     cout<<x<<" ";
+//     cout<<endl;
+// }
+
+int CSS(vector<int>&nums,int n,int k)
+{
+    priority_queue<pair<int,int>> max_heap;
+    
+    
+    for(int i=0;i<n;i++)
+    {
+        while(max_heap.size()!=0 and max_heap.top().second < i-k)
+        max_heap.pop();
+        
+        if(max_heap.size()!=0 and max_heap.top().first>0) //if its positive
+        nums[i]+=max_heap.top().first;
+        
+        
+        max_heap.push(make_pair(nums[i],i));
+    }
+    
+    // Print(nums);
+    
+    return *max_element(nums.begin(),nums.end());
+}
+
+    
+public:
+    int constrainedSubsetSum(vector<int>& nums, int k) {
+        
+     
+    int n = nums.size();
+ 
+    return CSS(nums,n,k);
+        
+    }
+};

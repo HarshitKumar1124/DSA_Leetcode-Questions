@@ -1,0 +1,206 @@
+
+
+STACK : Implementation Of STACK
+
+*********************************
+
+# include <bits/stdc++.h>
+
+using namespace std;
+
+class stk{
+    public:
+    int arr[10000];
+    int capacity;
+    int curr_size;
+    int top;
+    
+    stk(int n)
+    {
+        top=-1;
+        capacity=n;
+        curr_size=0;
+    }
+    
+    void Print()
+    {
+        if(top==-1)
+        {
+            cout<<"Stack is empty"<<endl;
+            return;
+        }
+        
+        for(int i=top;i>=0;i--)
+        cout<<arr[i]<<" ";
+        cout<<endl;
+        
+    }
+    int TOP();
+    bool IsEmpty();
+    int Capacity();
+    int size();
+    void Pop();
+    void Push();
+};
+
+
+bool stk::IsEmpty()
+{
+    if(curr_size==0)
+    return true;
+    
+    return false;
+}
+
+int stk::Capacity()
+{
+    return capacity;
+}
+
+int stk::size()
+{
+    return curr_size;
+}
+
+void stk::Push()
+{
+    if(curr_size==capacity)
+    {
+        cout<<"\nStack Overflow \n";
+        return;
+    }
+    
+    int x;
+    cout<<"Enter The Element "<<endl;
+    cin>>x;
+    
+    
+    arr[top+1]=x;
+    top++;
+    curr_size++;
+}
+
+void stk::Pop()
+{
+    if(top==-1)
+    {
+        cout<<"\nStack Underflow\n";
+        return;
+    }
+    
+    top--;
+    curr_size--;
+}
+
+
+int stk::TOP()
+{
+    if(top==-1)
+    {
+        cout<<"\nStack is Empty\n";
+        return INT_MIN;
+    }
+    
+    return arr[top];
+    
+}
+
+
+
+
+
+
+int main()
+{
+    cout<<"Enter Capacity for Stack"<<endl;
+    int n;
+    cin>>n;
+    stk st(n);
+  
+  
+   Menu:
+  
+  
+
+   cout<<"Press 1 to Print Stack"<<endl;
+   cout<<"Press 2 to Push In Stack"<<endl;
+   cout<<"Press 3 to Pop from Stack"<<endl;
+   cout<<"Press 4 to Print size of Stack"<<endl;
+   cout<<"Press 5 to Print Capacity of Stack"<<endl;
+   cout<<"Press 6 to Print Top of Stack"<<endl;
+   cout<<"Press 7 to Check Stack is empty or not"<<endl;
+   cout<<"Press Any Other Key to Exit"<<endl;
+   
+   char ch;
+   cin>>ch;
+  
+    if(ch=='1')
+    {
+        st.Print();
+        getchar();
+        goto Menu;
+    }
+    else if(ch=='2')
+    {
+    Pushing:
+        st.Push();
+        cout<<"\nWant To Push Again ? Y/N";
+        
+        char ch2;
+        cin>>ch2;
+        
+        if(ch2=='Y')
+        goto Pushing;
+        
+        goto Menu;
+    }
+    else if(ch=='3')
+    {
+        Poping:
+        st.Pop();
+        cout<<"\nWant To Pop Again ? Y/N";
+        
+        char ch2;
+        cin>>ch2;
+        
+        if(ch2=='Y')
+        goto Poping;
+        
+        goto Menu;
+    }
+    else if(ch=='4')
+    {
+        cout<<st.size();
+        cout<<endl<<"Press ANY Key to Go Back"<<endl;
+        getchar();
+        
+        goto Menu;
+    }
+    else if(ch=='5')
+    {
+        cout<<st.Capacity();
+        cout<<endl<<"Press ANY Key to Go Back"<<endl;
+        
+        getchar();
+        
+        goto Menu;
+    }
+    else if(ch=='6')
+    {
+        cout<<st.TOP();
+        cout<<endl<<"Press ANY Key to Go Back"<<endl;
+        getchar();
+        
+        goto Menu;
+    }
+    else if(ch=='7')
+    {
+        cout<<st.IsEmpty();
+        cout<<endl<<"Press ANY Key to Go Back"<<endl;
+        getchar();
+        
+        goto Menu;
+    }
+    
+   
+}

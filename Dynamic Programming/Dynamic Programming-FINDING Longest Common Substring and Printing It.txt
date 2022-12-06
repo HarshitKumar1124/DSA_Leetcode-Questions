@@ -1,0 +1,68 @@
+
+
+
+
+Dynamic Programming : FINDING Longest Common Substring and Printing It
+
+***************************************************************************
+
+
+   string LCSubs(string &s1,string &s2,int n1,int n2)
+    {
+        int maxi = 0;
+        
+        vector<vector<int>> DP(n1+1,vector<int> (n2+1,0));
+        
+        for(int i=0;i<=n1;i++)
+        {
+            for(int j=0;j<=n2;j++)
+            {
+                if(i==0 || j==0)
+                DP[i][j]=0;
+                else if(s1[i-1]==s2[j-1])
+                {
+                    DP[i][j]=1+DP[i-1][j-1];
+                    maxi=max(maxi,DP[i][j]);
+                }
+                else 
+                DP[i][j] = 0;
+            }
+        }
+        
+      string ans;
+      
+    
+      int startx,starty,milgaya=0;
+        
+     for(int i=0 ; i<=n1;i++)
+     {
+         for(int j=0;j<=n2;j++)
+         {
+             if(DP[i][j]!=maxi)
+             continue;
+             else
+             {
+                 startx=i;
+                 starty=j;
+                 milgaya++;
+                 break;
+             }
+         }
+         
+         if(milgaya)
+         break;
+     }
+     
+     int i=startx,j=starty;
+     while(i>=0 and j>=0 and DP[i][j]!=0)
+     {
+         ans.push_back(s1[i-1]);
+        //  cout<<s1[i-1]<<endl;
+         i--;
+         j--;
+     }
+     
+        return ans;
+            // return maxi;
+    }
+    

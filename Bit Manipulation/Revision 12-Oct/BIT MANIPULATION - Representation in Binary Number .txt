@@ -1,0 +1,40 @@
+
+
+
+
+BIT MANIPULATION  : Representation in Binary Number 
+
+***************************************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  
+   int n=76;
+   
+   unsigned int i =1<<31;
+   
+   //reducing masking size..given number is not changed in llength...thus binary representation is not reverseda
+   
+   while(i>=1)
+   {
+       if(n&i)
+       cout<<1;
+       else
+       cout<<0;
+       
+       i/=2;
+   }
+   
+   
+   cout<<endl;
+   
+   ;
+   
+   
+   //reducing number ...here mask of 1 is constant...and binary representation is reversed
+   for(unsigned int m = 76;m>=1;m/=2)
+   cout<<(m&1);
+}

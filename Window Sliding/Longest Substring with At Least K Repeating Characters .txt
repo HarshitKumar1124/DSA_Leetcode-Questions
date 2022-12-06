@@ -1,0 +1,54 @@
+
+
+395. Longest Substring with At Least K Repeating Characters 
+
+*************************************************************
+
+
+class Solution {
+    
+    
+    int Function(string s,int &k,int start,int end)
+    {
+
+        if(end-start+1 < k  || end>=s.size() || start<0)
+        {
+           
+            return 0;
+        }
+        
+        unordered_map<char,int> mp;
+        
+        
+        for(int i=start;i<=end;i++)
+            mp[s[i]]++;
+        
+  
+        for(int j=start;j<=end;j++)
+        {
+            if(mp[s[j]]<k)
+            {
+                // string temp=s.substr(start,j-start);
+                // string temp2 = s.substr(j);
+                
+                int x = max(Function(s,k,start,j-1),Function(s,k,j+1,end));
+            
+                
+                return x;
+            }
+                
+        }
+        
+  
+        return end-start+1;
+    }
+    
+public:
+    int longestSubstring(string s, int k) {
+        
+        //https://www.youtube.com/watch?v=5QpMpO2CAb0
+        int n = s.size();
+        return Function(s,k,0,n-1);
+        
+    }
+};

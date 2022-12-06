@@ -1,0 +1,189 @@
+
+
+
+GRAPH : M Coloring 
+
+Graph Coloring
+
+https://www.geeksforgeeks.org/graph-coloring-applications/
+
+*****************************
+
+Recursive DFS Approach: 
+
+*************************
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+void CreateEdge(int u,int v,vector<int> Graph[])
+{
+    Graph[u].push_back(v);
+    Graph[v].push_back(u);
+}
+
+
+bool CanColor(vector<int> Graph[],int color,int element,unordered_map<int,int> &mp)
+{
+    for(auto x:Graph[element])
+    {
+        if(mp[x]==color)
+        return false;
+    }
+    
+    return true;
+}
+
+
+bool IsMColoring(vector<int>Graph[],int &n,int &m,int element,unordered_map<int,int> mp)
+{
+    if(n<m)
+    return false;
+    
+    
+    
+    
+    if(element==n)
+    return true;
+    
+    
+        for(int k=1;k<=m;k++)
+        {
+            if(CanColor(Graph,k,element,mp))
+            {
+                mp[element]=k;
+                bool val = IsMColoring(Graph,n,m,element+1,mp);
+                
+                if(val==true)
+                return true;
+            }
+        }
+        
+        return false;
+    
+}
+
+int main()
+{
+    int n=3;
+    int m = 2;
+    
+    vector<vector<int>> Edges = {{0,1},{1,2},{0,2}};
+    
+    vector<int> Graph[n];
+    
+    for(auto x:Edges)
+    CreateEdge(x[0],x[1],Graph);
+    
+    unordered_map<int,int> mp;
+    
+    for(int i=0;i<n;i++)
+    mp[i]=-1;
+    
+    cout<<IsMColoring(Graph,n,m,0,mp);
+    
+    
+}
+
+
+#################################################################################################################################
+
+Iterative BFS Approach : 
+
+****************************
+
+class Solution {
+    
+    void CreateEdge(int u,int v,vector<int> Graph[])
+    {
+        Graph[u].push_back(v);
+        Graph[v].push_back(u);
+    }
+    
+    bool BFS_MColoring(vector<int>Graph[],int &n,int element,unordered_map<int,int> &mp,vector<int> &visited)
+    {
+        
+        queue<pair<int,int>> q;
+        q.push(make_pair(element,1));
+        mp[element]=1;
+        visited[element]=1;
+        
+        while(q.size()!=0)
+        {
+            pair<int,int> temp = q.front();
+            q.pop();
+            int node = temp.first;
+            int plantcode = temp.second;
+            
+            for(auto x:Graph[node])
+            {
+                if(!visited[x])
+                {
+                    visited[x]=1;
+                    
+                    vector<int> options={1,2,3,4};
+                    
+                   for(auto xx:Graph[x])
+                   {
+                       if(mp.find(xx)!=mp.end())
+                           options[mp[xx]-1] =-1;
+                     
+                   }
+                    
+                  
+                    
+                    int idx=0;
+                    while(idx<4 and options[idx]==-1)
+                        idx++;
+                    
+                    mp[x]=options[idx];
+                    q.push(make_pair(x,mp[x]));
+                }
+            }
+        }
+        
+       
+        
+        return true;
+    }
+    
+    // void Print(vector<int> v)
+    // {
+    //     for(auto x:v)
+    //         cout<<x<<" ";
+    //     cout<<endl;
+    // }
+    
+public:
+    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {
+        
+        // Here DFS M COLORING approach is taking memory Limit exceeded time
+        
+        //Thus we will check BFS Approach
+        
+        vector<int> Graph[n];
+        
+        for(auto x:paths)
+        CreateEdge(x[0]-1,x[1]-1,Graph);
+        
+        vector<int> visited(n,0);
+        unordered_map<int,int> mp;
+        
+        //For Connected Graphs
+        for(int f=0;f<n;f++)
+        {
+            if(!visited[f])
+                BFS_MColoring(Graph,n,f,mp,visited);
+        }   
+        
+        
+        vector<int> ans(n);
+        
+        for(auto x=mp.begin();x!=mp.end();x++)
+        ans[x->first] = x->second;
+        
+        // Print(ans);
+        return ans;
+    }
+};

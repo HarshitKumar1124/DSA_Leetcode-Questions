@@ -1,0 +1,141 @@
+
+
+
+
+
+Graph : Find Number Of Strongly Connected Components (KosaRaju Algorithm ) : 
+
+*****************************************************
+
+Approach 1: Using BFS()/DFS() 
+
+Time Complexity : O(E*(V+E))
+
+****************************
+
+class Solution
+{
+    
+    void CreateEdge(int u,int v,vector<int> Graph[])
+{
+    Graph[u].insert(Graph[u].begin(),v);
+    
+}
+
+void RemoveEdge(int u,int v,vector<int> Graph[])
+{
+    auto x  = find(Graph[u].begin(),Graph[u].end(),v);
+    Graph[u].erase(x);
+    
+}
+
+
+void BFS(vector<int> Graph[],int n,int element,vector<int>&visited)
+{
+    queue<int> q;
+    q.push(element);
+    visited[element]=1;
+    
+    while(q.size()!=0)
+    {
+        int temp = q.front();
+        q.pop();
+        
+        for(auto x:Graph[temp])
+        {
+            if(!visited[x])
+            {
+                visited[x]=1;
+                q.push(x);
+            }
+        }
+    }
+}
+
+
+int ComponentCount(vector<int> Graph[],int n,vector<int>&indegree)
+{
+    int counter=0;
+    vector<int> visited(n,0);
+    
+    int mini = INT_MAX;
+    int idx;
+    
+    for(int i=0;i<n;i++)
+    {
+        if(mini>indegree[i])
+        {
+            mini = indegree[i];
+            idx=i;
+        }
+    }
+    
+   
+    BFS(Graph,n,idx,visited);
+    bool extra=false;
+    
+    for(int i=0;i<n;i++)
+    {
+        if(!visited[i])
+        {
+            extra++;
+           break;
+        }
+    }
+    
+    if(!extra)
+    return 1;
+    
+    return 2;
+}
+
+
+
+	public:
+
+   
+    int func(int n, vector<int> Graph[])
+    {
+        int bridge=0;
+        vector<int> indegree(n,0);
+         for(int i=0;i<n;i++)
+        {
+            for(auto x:Graph[i])
+            {
+                indegree[x]++;
+            }
+        }
+        
+        
+        
+        for(int i=0;i<n;i++)
+        {
+            for(auto x:Graph[i])
+            {
+                RemoveEdge(i,x,Graph);
+                indegree[x]--;
+                
+                if(ComponentCount(Graph,n,indegree)>1)
+                bridge++;
+                
+                CreateEdge(i,x,Graph);
+                indegree[x]++;
+                
+                // cout<<i<<" "<<x<<" -> "<<bridge<<endl;
+            }
+        }
+        
+        return bridge+1;
+    }
+};
+
+
+
+*****************************************************************************************************
+
+Approach 2 : Using KosaRaju Algorithm 
+
+Time Complexity: O(V+E)
+
+***************************
+

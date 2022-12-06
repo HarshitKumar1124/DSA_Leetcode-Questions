@@ -1,0 +1,74 @@
+Bit Manipulation 
+
+
+Question - 41. First Missing Positive
+
+https://leetcode.com/problems/first-missing-positive/
+
+https://www.youtube.com/watch?v=8g78yfzMlao
+
+
+**********************************************
+
+Approach 1 : Using sorting
+
+Time Complexity  : O(NLOGN)
+
+**********************
+
+ int firstMissingPositive(vector<int>& nums) {
+        
+        //https://www.youtube.com/watch?v=8g78yfzMlao
+        
+        int ans=1;
+        
+        sort(nums.begin(),nums.end());
+        
+        for(auto x:nums)
+            if(x>0 and x==ans)
+                ans++;
+        
+        
+        
+        return ans;
+                
+        
+    }
+	
+
+
+********************************************************
+
+Approach 2: Using Hashmap
+
+Time Complexity: O(N)
+Space Complexity: O(N)
+
+***********************
+
+int function(vector<int>&nums)
+{
+  
+  unordered_map<int,int> mp;
+  
+  for(auto x:nums)
+  if(x>0)
+  mp[x]++;
+  
+
+  
+  
+  
+  for(int i=1;i<=nums.size()+1;)
+  {
+    auto itr =  mp.find(i);
+	
+	if(auto ==mp.end())
+	return i;
+    
+    i++; 	
+  }
+  
+  return nums.size()+1;
+  
+ }

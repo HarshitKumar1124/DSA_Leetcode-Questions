@@ -1,0 +1,102 @@
+
+
+
+
+Data Structure - GRAPH 
+
+*************************
+
+Creating And Printing Adjacentcy List
+
+Breadth First Search Algorithm
+
+Depth First Search or DFS for a Graph
+
+207. Course Schedule -- (cyclic Detection in digraph using BFS -- Kahns Algorithm ) -- https://leetcode.com/problems/course-schedule/
+
+210. Course Schedule II -- (cyclic Detection in digraph using BFS -- Kahns Algorithm ) -- https://leetcode.com/problems/course-schedule-ii/
+
+
+
+310. Minimum Height Trees -- https://leetcode.com/problems/minimum-height-trees/ -- VERY VERY VERY IMPORTANT RESULT QUESTION
+
+
+
+*****************************************************************************************************************************************
+
+733. Flood Fill -- https://leetcode.com/problems/flood-fill/ -- VERY IMPORTANT
+
+463. Island Perimeter -- https://leetcode.com/problems/island-perimeter/
+
+Steps by Knight  -- https://practice.geeksforgeeks.org/problems/steps-by-knight/0
+
+
+
+
+
+
+
+847. Shortest Path Visiting All Nodes
+
+*********************************************************************************************************************************************
+
+127. Word Ladder -- https://leetcode.com/problems/word-ladder/   -- VERY VERY VERY HARD Problem 
+
+
+
+
+
+
+
+
+
+
+
+
+***********************************************************************************************************************************************
+
+Minimum time taken by each job to be completed given by a Directed Acyclic Graph -- https://www.geeksforgeeks.org/minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph/
+
+Topological sort -- https://practice.geeksforgeeks.org/problems/topological-sort/1
+
+Prerequisite Tasks -- https://practice.geeksforgeeks.org/problems/prerequisite-tasks/1
+
+Find the number of islands -- https://practice.geeksforgeeks.org/problems/find-the-number-of-islands/1
+
+Prims Algorithm -- https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1
+
+
+***********************
+
+**Determinant of a Matrix -- https://practice.geeksforgeeks.org/problems/determinant-of-a-matrix-1587115620/1
+
+***Total Number Of Spanning Trees In A Graph -- https://practice.geeksforgeeks.org/problems/total-number-of-spanning-trees-in-a-graph/1   -- VERY VERY IMPORTANT INCTERVIEW QUESTION
+
+
+************************
+
+BellMan Ford -- https://www.geeksforgeeks.org/bellman-ford-algorithm-dp-23/  -- IMPORTANT
+
+Negative weight cycle -- https://practice.geeksforgeeks.org/problems/negative-weight-cycle3504/1
+
+ 
+ 
+ 
+ ################################################################################################################################
+ 
+ Hamiltonian Path - https://practice.geeksforgeeks.org/problems/hamiltonian-path2522/1
+ 
+ Travelling Salesman Problem -- https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/
+ 
+ 1042. Flower Planting With No Adjacent  https://leetcode.com/problems/flower-planting-with-no-adjacent/   -- ImPORTANT
+ 
+ https://www.geeksforgeeks.org/bridge-in-a-graph/
+ 
+** https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1  --IMPORTANT
+
+** https://www.geeksforgeeks.org/bipartite-graph/
+
+Longest Path in a Directed Acyclic Graph 
+
+
+

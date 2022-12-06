@@ -1,0 +1,79 @@
+
+
+
+
+BackTrack +  Graph : M coloring
+**********************
+
+
+
+public:
+    // Function to determine if graph can be coloured with at most M colours such
+    // that no two adjacent vertices of graph are coloured with same colour.
+    
+    bool IsSafe(vector<int> Graph[],int m,int n,int k,int node,vector<int>&color)
+    {
+        for(auto x:Graph[node])
+        if(color[x]==k)
+        return false;
+        
+        return true;
+        
+    }
+    
+    
+    bool Solve(vector<int> Graph[],int m,int n,int node,vector<int> &color)
+    {
+        if(node==n)
+        return true;
+        
+        for(int k=1;k<=m;k++)
+        {
+            if(IsSafe(Graph,m,n,k,node,color))
+            {
+                color[node]=k;
+                
+                bool val = Solve(Graph,m,n,node+1,color);
+                
+                if(val)
+                return true;
+                
+                color[node]=-1;
+            }
+        }
+        
+        return false;
+    }
+    
+    void CreateEdge(int u,int v,vector<int> Graph[])
+    {
+        Graph[u].push_back(v);
+        Graph[v].push_back(u);
+    }
+    
+    
+    bool graphColoring(bool graph[101][101], int m, int n) {
+        
+        if(m>n)
+        return false;
+        
+        vector<int> Graph[n];
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(graph[i][j]==true)
+                CreateEdge(i,j,Graph);
+            }
+        }
+        
+        vector<int> color(n,-1);
+        
+        if(Solve(Graph,m,n,0,color)==true)
+        return true;
+        
+        
+        return false;
+    }
+};

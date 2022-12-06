@@ -1,0 +1,97 @@
+
+
+BINARY TREES : LEETCODE
+
+**************************
+
+Creating Binary Treee 
+
+Inorder Traversal , PreOrder and PostOrder Traversal
+
+Level Order Traversal
+
+Height Of The Tree -- https://practice.geeksforgeeks.org/problems/height-of-binary-tree/1
+
+** Minimum Depth of a Binary Tree --- https://practice.geeksforgeeks.org/problems/minimum-depth-of-a-binary-tree/1
+
+** Diameter of a Binary Tree -- https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1
+
+* Creating the Mirror of Binary Tree -- https://www.geeksforgeeks.org/create-a-mirror-tree-from-the-given-binary-tree/
+
+
+
+*** Iterative Approach of Inorder , PreOrder and PostOrder Treversal of Tree -- STANDARD RESULT IMPORTANT
+
+**************  BINARY TREE - Iterative Method Of ALL Tree Traversal In One iterations --- STANDARD RESULT IMPORTANT
+
+
+Check for Balanced Tree -- https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1
+
+543. Diameter of Binary Tree -- https://leetcode.com/problems/diameter-of-binary-tree/
+
+Zig-Zag traversal of a binary tree -- 
+
+Check if a tree is balanced or not -- 
+
+Diagnol Traversal of a Binary tree -- 
+
+*** Boundary traversal of a Binary tree --https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1-- IMPORTANT
+
+*** Maximum path sum from any node -- https://practice.geeksforgeeks.org/problems/maximum-path-sum-from-any-node/1 -- IMPORTANT
+
+*** Determine if Two Trees are Identical -- https://practice.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1 --IMPORTANT
+
+*** Top View of Binary Tree -- https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1 --IMPORTANT
+
+*** Bottom View of Binary Tree -- https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1 -- IMPORTANT
+
+*** Left View of Binary Tree -- https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1 -- IMPORTANT
+
+*** Right View of Binary Tree -- https://practice.geeksforgeeks.org/problems/right-view-of-binary-tree/1 -- IMPORTANT
+
+*** Symmetric Tree -- https://practice.geeksforgeeks.org/problems/symmetric-tree/1 -- IMPORTANT
+
+Root To Leaf -- https://practice.geeksforgeeks.org/problems/root-to-leaf-paths/1
+
+**** Lowest Common Ancestor in a Binary Tree --- https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1 -- very important
+
+Maximum Width of Tree -- https://practice.geeksforgeeks.org/problems/maximum-width-of-tree/1
+
+Children Sum Parent -- https://practice.geeksforgeeks.org/problems/children-sum-parent/1
+
+K distance from root -- https://practice.geeksforgeeks.org/problems/k-distance-from-root/1
+
+
+**** Burning Tree -- https://practice.geeksforgeeks.org/problems/burning-tree/1 -- VERY IMPORTANT
+
+**** Complete Binary Tree -- https://practice.geeksforgeeks.org/problems/complete-binary-tree/1 -- VERY IMPORTANT
+
+
+***** Construct Unique Binary Tree From the Given Inorder And Preorder Traversal -- https://practice.geeksforgeeks.org/problems/construct-tree-1/1 -- VERY VERY IMPORTANT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

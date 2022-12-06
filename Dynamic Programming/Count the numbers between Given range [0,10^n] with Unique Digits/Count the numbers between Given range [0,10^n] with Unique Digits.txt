@@ -1,0 +1,63 @@
+
+
+
+LEETCODE : Dynamic Programming :
+
+Question : Count the numbers between Given range [0,10^n] with Unique Digits : 
+
+https://leetcode.com/problems/count-numbers-with-unique-digits/
+
+*******************************************************************************
+
+
+Time Complexity  :O(n)
+
+************************
+
+
+int countNumbersWithUniqueDigits(int n) {
+        
+        
+        // https://www.youtube.com/watch?v=dcnDIKBWWG0
+        
+        vector<int> DP(n+1,0);
+        
+        DP[0]=1;
+        
+        vector<pair<int,int> > digit(n+1);
+        
+        // pair{
+        //     duplicate count and NonDuplicate count
+        // }
+        
+        int PrevDuplicate=0;
+        int PrevNonDuplicate = 1;
+        
+        for(int i=1;i<=n;i++)
+        {
+            int Dupli = PrevNonDuplicate * (i-1) + 10*(PrevDuplicate);
+            
+            int NonDupli = pow(10,i) - pow(10,i-1) - Dupli;
+            
+            digit[i] = make_pair(Dupli,NonDupli);
+            
+            PrevDuplicate = Dupli;
+            PrevNonDuplicate = NonDupli;
+            
+        }
+        
+        
+        for(int i=1;i<=n;i++)
+            DP[i] = digit[i].second;
+        
+        int sum=0;
+        
+        
+        for(int i=0;i<=n;i++)
+            DP[i]=sum+DP[i],sum=DP[i];
+        
+        // for(auto x:DP)
+        //     cout<<x<<" ";
+        
+        return DP[n];
+    }

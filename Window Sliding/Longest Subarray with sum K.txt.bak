@@ -1,0 +1,61 @@
+
+
+
+
+Longest Subarray with sum K : 
+
+
+Be Careful to have -ve Elements too. Thus Use PrefixSum Method.... Not simple Window sliding
+
+*********************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+int LongestSubarrayWithsumk(vector<int> &nums,int n,int k)
+{
+
+    int i=0,j=0;
+    unordered_map<int,vector<vector<int>> > mp;
+    int maxi = 0,sum=0;
+
+	while(j<n)
+	{
+		sum+=nums[j];
+
+		if(sum==k)
+			maxi=max(maxi,j-i+1);
+
+		if(mp.find(sum-k)!=mp.end())
+			maxi = max(maxi,j-(mp[sum-k].back())[1]+1);
+		
+		mp[sum].push_back({i,j});
+
+		j++;
+
+	}
+
+
+	// for(auto x=mp.begin();x!=mp.end();x++)
+	// {	cout<<x->first<<" -> ";
+   
+
+ //      for(auto xx:x->second)
+ //      	cout<<xx[1]<<" ";
+
+ //      cout<<endl;
+ //     }
+
+     return maxi;
+}
+
+int main()
+{
+	vector<int> nums ={-5, 8, -14, 2, 4, 12};
+
+	int n = nums.size();
+
+int k=-5;
+	cout<<LongestSubarrayWithsumk(nums,n,k);
+}

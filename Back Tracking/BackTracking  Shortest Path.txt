@@ -1,0 +1,100 @@
+
+
+
+BackTracking : Shortest Path
+
+********************************
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+int mini = INT_MAX;
+
+
+bool IsSafe(vector<vector<int>> &nums,int i,int j,int &n,int &m)
+{
+	 vector<vector<int>> directions = {{0,1},{1,0},{0,-1},{-1,0}};
+
+	 for(auto x:directions)
+	 {
+	 	int x1 = i+x[0];
+	 	int y1 = j+x[1];
+
+	 	if(x1>=0 and y1>=0 and x1<n and y1<m and nums[x1][y1]==0)
+	 		return false;
+	 }
+
+	 return true;
+
+
+}
+
+void FinalFunction(vector<vector<int>> &nums,int i,int j,int &n,int &m,int count,vector<vector<int>>&visited)
+{
+	   if(j==m-1)
+	   {
+	   	mini = min(mini,count);
+	   	return;
+	   }
+
+	   vector<vector<int>> directions = {{0,1},{1,0},{0,-1},{-1,0}};
+
+	   for(auto x:directions)
+	   {
+	   	 int x1 = i + x[0];
+	   	 int y1 = j + x[1];
+
+	   	 if(x1>=0 and y1>=0 and x1<n and y1<m and visited[x1][y1]==-1 and nums[x1][y1]!=0 and IsSafe(nums,x1,y1,n,m))
+	   	 	{
+	   	 		visited[x1][y1]=1;
+	   	 		FinalFunction(nums,x1,y1,n,m,count+1,visited);
+	   	        visited[x1][y1]=-1;
+	   	    }
+	   }
+}
+
+
+int Function(vector<vector<int>> &nums)
+{
+	int n = nums.size();
+	int m = nums[0].size();
+
+    if(n==0 or nums[0][0]==0)
+    	return INT_MAX;
+
+
+
+     
+     vector<vector<int>> visited(n,vector<int>(m,-1));
+     for(int i=0;i<n;i++)
+     {
+         
+     	if(IsSafe(nums,i,0,n,m))
+     	FinalFunction(nums,i,0,n,m,0,visited);
+     	
+     }
+     return mini;
+}
+
+
+int main()
+{
+	vector<vector<int>> Grid ={{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 0, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 0, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 0, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 0, 1, 1, 1, 1 },
+        { 1, 0, 1, 1, 1, 1, 1, 1, 0, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 0, 1, 1, 1, 1, 0, 1, 1, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 1, 0, 1, 1, 1, 1, 1, 1 }};
+
+
+
+
+    cout<<Function(Grid);
+}

@@ -1,0 +1,51 @@
+
+
+Find The LCM of Given Array Elements : https://www.geeksforgeeks.org/lcm-of-given-array-elements/
+
+
+LCM(a,b ) * GCD(a,b) = a*b;
+
+where a,b are two numbers
+
+**************************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+int GCD(int a,int b)
+{
+   int r=1;
+    
+    while(r!=0)
+    {
+        
+        r = a%b;
+        
+        if(r==0)
+        return b;
+        
+        a=b;
+        b=r;
+    }
+    
+    return b;
+}
+
+int FindLCM(vector<int> &nums)
+{
+    int ans=1;
+ 
+    
+    for(auto x:nums)
+    ans = x*ans / GCD(ans,x);
+    
+    return ans;
+}
+
+int main()
+{
+    vector<int> num = {1, 2, 8, 3};
+    
+    cout<<FindLCM(num);
+
+}

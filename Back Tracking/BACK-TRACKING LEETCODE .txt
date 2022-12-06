@@ -1,0 +1,81 @@
+
+
+BACK-TRACKING : LEETCODE 
+
+****************************
+
+51. N-Queen -- https://leetcode.com/problems/n-queens/ -- VERY VERY IMPORTANT
+
+139. Word Break -- https://leetcode.com/problems/word-break/ *
+
+301. Remove Invalid Parentheses --   https://leetcode.com/problems/remove-invalid-parentheses/   -- VERY VERY VERY HARD AND IMPORTANT QUESTION
+
+37. Sudoku Solver -- https://leetcode.com/problems/sudoku-solver/ -- VERY VERY IMPORTANT AND HARD
+
+980. Unique Paths III -- https://leetcode.com/problems/unique-paths-iii/
+
+
+79. Word Search -- https://leetcode.com/problems/word-search/ -- IMPORTANT
+
+212. Word Search II --- https://leetcode.com/problems/word-search-ii/ ---******************** CONCEPT OF TRIES
+
+
+
+
+
+
+M-Coloring Problem -- https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
+
+Find all possible palindromic partitions of a String -- https://practice.geeksforgeeks.org/problems/find-all-possible-palindromic-partitions-of-a-string/1
+
+1046. Last Stone Weight -- heap -- https://leetcode.com/problems/last-stone-weight/
+
+1049. Last Stone Weight II -- https://leetcode.com/problems/last-stone-weight-ii/  --  VERY VERY IMPORTANT QUESTION -- Similar to minimizing difference in subsets
+
+Tug of War -- https://www.geeksforgeeks.org/tug-of-war/  OR PRINTING The 2 subsets such that their sums difference is minimum
+
+Find shortest safe route in a path with landmines -- 
+
+22. Generate Parentheses -- https://leetcode.com/problems/generate-parentheses/ -- **
+
+47. Permutations II *** -- https://leetcode.com/problems/permutations-ii/  -- NICE QUESTIONS
+
+52. N-Queens II -- https://leetcode.com/problems/n-queens-ii/
+
+93. Restore IP Addresses --- https://leetcode.com/problems/restore-ip-addresses/ -- IMPORTANT
+
+
+95. ******* Unique Binary Search Trees II --- https://leetcode.com/problems/unique-binary-search-trees-ii/  ---- VERY IMPORTANT STANDaRD QUESTION
+
+
+
+
+#########################
+
+39. Combination Sum -- https://leetcode.com/problems/combination-sum/
+
+40. **Combination Sum II -- https://leetcode.com/problems/combination-sum-ii/ -- VERY VERY UNIQUE WAYS  Question Nice APPROACH TECHNIQUE        **
+
+216. Combination Sum III -- https://leetcode.com/problems/combination-sum-iii/
+
+17. Letter Combinations of a Phone Number -- https://leetcode.com/problems/letter-combinations-of-a-phone-number/    --Practical Use of it happens in dialling pad of phone to search contacts
+
+377. ** Combination Sum IV  -- https://leetcode.com/problems/combination-sum-iv/ -- VERY VERY NICE TECHNIQUE
+
+Permutations of a given string -- https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string/0
+
+46. Permutations -- https://leetcode.com/problems/permutations/ 
+
+567. Permutation in String -- https://leetcode.com/problems/permutation-in-string/
+
+797. All Paths From Source to Target -- https://leetcode.com/problems/all-paths-from-source-to-target/
+
+Longest Possible Route in a Matrix with Hurdles -- https://practice.geeksforgeeks.org/problems/longest-possible-route-in-a-matrix-with-hurdles/1
+
+Find all possible paths from top to bottom -- https://practice.geeksforgeeks.org/problems/find-all-possible-paths-from-top-to-bottom/1
+
+
+
+
+
+

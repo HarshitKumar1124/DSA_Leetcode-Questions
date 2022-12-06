@@ -1,0 +1,95 @@
+
+
+
+BINARY TREE - Complete Binary Tree
+
+*************************************
+
+ 
+    bool BFS(Node* root)
+    {
+        queue<pair<Node*,int>> q;
+        q.push(make_pair(root,0));
+   
+        
+        vector<vector<int>> lastLevel;
+        
+        while(q.size()!=0)
+        {
+            int size = q.size();
+        
+            vector<int> levelElement;
+            
+            while(size--)
+            {
+                pair<Node*,int> temp = q.front();
+                q.pop();
+                
+                Node* ptr = temp.first;
+                int level = temp.second;
+                
+                if(ptr!=NULL)
+                {
+                    
+                
+                q.push(make_pair(ptr->left,level+1));
+                
+                q.push(make_pair(ptr->right,level+1));
+                
+                }
+                
+                if(ptr!=NULL)
+                levelElement.push_back(ptr->data);
+                else
+                levelElement.push_back(-1);
+            
+            }
+            
+            
+            
+            
+            lastLevel.push_back(levelElement);
+        
+            
+            
+        }
+        
+        lastLevel.pop_back();
+        
+     
+      for(int i=0;i<lastLevel.size();i++)
+      {
+          bool val = (find(lastLevel[i].begin(),lastLevel[i].end(),-1)!=lastLevel[i].end());
+          if(val and (i!=lastLevel.size()-1))
+          return false;
+      }
+      
+      vector<int> end = lastLevel.back();
+      
+      int idx=-1;
+      
+      for(int i=0;i<end.size();i++)
+      {
+          if(end[i]==-1)
+          {
+              idx=i;
+              break;
+          }
+      }
+      
+      if(idx==-1)
+      return true;
+      
+      for(int i=idx+1;i<end.size();i++)
+      {
+          if(end[i]!=-1)
+          return false;
+      }
+      
+      return true;
+    }
+public:    
+    bool isCompleteBT(Node* root){
+        
+        return BFS(root);
+    }

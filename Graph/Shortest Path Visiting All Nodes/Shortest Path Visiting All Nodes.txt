@@ -1,0 +1,157 @@
+
+
+
+
+847. Shortest Path Visiting All Nodes
+
+Question - https://leetcode.com/problems/shortest-path-visiting-all-nodes/
+
+
+// Explaination: https://www.youtube.com/watch?v=CCCr5rr-oio
+
+
+******************************************
+
+class Solution {
+    
+   vector<vector<int>>  FloydWarshall(int n,vector<vector<int>> &graph)
+    {
+        vector<vector<int>> ans(n,vector<int>(n,5));
+       
+       for(int i=0;i<n;i++)
+       {
+           for(auto x:graph[i])
+           {
+               ans[i][x]=1;
+           }
+       }
+       
+       for(int i=0;i<n;i++)
+           ans[i][i] = 0;
+       
+       
+       for(int k=0;k<n;k++)
+       {
+           for(int i=0;i<n;i++)
+           {
+               for(int j=0;j<n;j++)
+               {
+                   ans[i][j] = min(ans[i][j],ans[i][k] + ans[k][j]);
+               }
+           }
+       }
+       
+       return ans;
+    }
+    
+    void Print(vector<vector<int>> &v)
+    {
+        for(int i=0;i<v.size();i++)
+        {
+            for(auto x:v[i])
+                cout<<x<<" ";
+            cout<<endl;
+        }
+    }
+    
+    vector<int> BFS(vector<vector<int>> &graph,int n,int start)
+    {
+        queue<int> q;
+        vector<int> ans;
+        vector<int> visited(n,0);
+        
+        q.push(start);
+        visited[start]=1;
+        ans.push_back(start);
+        
+        while(q.size()!=0)
+        {
+            int temp = q.front();
+            q.pop();
+            
+            for(auto x:graph[temp])
+            {
+                if(!visited[x])
+                {
+                    visited[x]=1;
+                    ans.push_back(x);
+                    q.push(x);
+                }
+            }
+        }
+        
+        return ans;
+    }
+    
+    
+    int PathCostCalculator(vector<int> &path,vector<vector<int>> &ShortestDistMatrix)
+    {
+        int n = path.size();
+        
+        int sum=0;
+        for(int i=0;i<n-1;i++)
+        {
+            sum+=ShortestDistMatrix[path[i]][path[i+1]];
+        }
+        
+        return sum;
+    }
+    
+    
+public:
+    
+    
+    
+    
+    
+    int shortestPathLength(vector<vector<int>>& graph) {
+        
+        int n = graph.size();
+        
+        vector<vector<int>> ShortestDistMatrix = FloydWarshall(n,graph);
+        
+        Print(ShortestDistMatrix);
+        
+        
+        // *****************************************************************************
+        
+        cout<<endl<<"Valid Paths: "<<endl;
+        
+        vector<vector<int>> PossibleBFSPaths;
+        
+        for(int i=0;i<n;i++)
+        {
+            vector<int> temp = BFS(graph,n,i);
+            PossibleBFSPaths.push_back(temp);
+        }
+        
+        Print(PossibleBFSPaths);
+        
+        
+        // *********************************************************************************
+        
+        vector<int> CostOfPaths(n,0);
+        
+        for(int i=0;i<n;i++)
+        {
+            CostOfPaths[i] = PathCostCalculator(PossibleBFSPaths[i],ShortestDistMatrix);
+        }
+        
+        
+        
+        return *min_element(CostOfPaths.begin(),CostOfPaths.end());
+        
+    }
+};
+
+
+
+But Here the problem is: BFS doesn't give path 0-1-4-2-3 ... rather it gives 0-1-2-4-3.  0-1-4-2-3 will compute less path cost than 0-1-2-4-3.
+
+
+Thus: we can do one approch: 
+
+
+1. Generate All path starting from each node using DFS and choose the min Cost Weighted path. Thus from among 0-1-2-4-3 and 0-1-4-2-3 we will get 0-1-4-2-3.
+
+2. Rest do same as Done. Use FloydWarshall Table to compute path cost

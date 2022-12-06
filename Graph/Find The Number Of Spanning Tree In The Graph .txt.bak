@@ -1,0 +1,137 @@
+
+
+
+Graph : Find The Number Of Spanning Tree In The Graph 
+
+*****************************************************
+
+If The Graph is complete Graph then its number of spanning tree is equal to N^(N-2) ....Given by Cayley's Formula  
+
+But for grapph if not be complete then we find using concept of KIRCHOFF'S MATRIX or MATRIX TREE Theorem 
+
+Question : https://practice.geeksforgeeks.org/problems/total-number-of-spanning-trees-in-a-graph/1
+
+*********************************************************************************************************
+
+
+
+ void  CopyMatrixForSubmatrix(vector<vector<int>> &temp,vector<vector<int>> &matrix,int n,int row,int col)
+    {
+        
+        int k=0,l=0;
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+               if (i != row && j != col)
+             {
+                temp[k][l++] = matrix[i][j];
+ 
+                // Row is filled, so increase row index and
+                // reset col index
+                if (l == n - 1)
+                {
+                    l = 0;
+                    k++;
+                }
+             }
+            }
+        }
+    }
+    
+    int determinantOfMatrix(vector<vector<int> > matrix, int n)
+    {
+        if(n==1)
+        return matrix[0][0];
+        
+        int ans=0;
+        int sign=1;
+        
+        vector<vector<int>> temp(n-1,vector<int>(n-1,0));
+        
+        for(int i=0;i<n;i++)
+        {
+            CopyMatrixForSubmatrix(temp,matrix,n,0,i);
+            ans+=sign*matrix[0][i]*determinantOfMatrix(temp,n-1);
+            
+            sign=-sign;
+        }
+        
+        return ans;
+    }
+    
+    
+    public:
+    int countSpanningTrees(vector<vector<int>>&graph, int n, int m){
+        
+        vector<vector<int>> degree(n,vector<int>(n,0));
+        
+        vector<vector<int>> adjacentcy_matrix(n,vector<int>(n,0));
+        
+        for(int i=0;i<m;i++)
+        {
+            int x = graph[i][1];
+            int y = graph[i][0];
+            degree[y][y]++;
+            degree[x][x]++;
+            
+            adjacentcy_matrix[y][x]=1;
+            adjacentcy_matrix[x][y]=1;
+            
+        }
+        
+        // for(int i=0;i<n;i++)
+        // {
+        //     for(int j=0;j<n;j++)
+        //     {
+        //         cout<<degree[i][j]<<" ";
+        //     }
+        //     cout<<endl;
+        // }
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                
+                if(i==j)
+                adjacentcy_matrix[i][j]=degree[i][j];
+                else
+                adjacentcy_matrix[i][j]= -1*adjacentcy_matrix[i][j];
+            }
+        }
+        
+        // degree matrix - adjucentcy matrix  = Laplacian matrix
+        
+        // now graph is Laplacian matrix or kirchoff's matrix
+        
+        vector<vector<int>> temp(n-1,vector<int>(n-1,0));
+        
+        for(int i=1;i<n;i++)
+        {
+            for(int j=1;j<n;j++)
+            {
+                temp[i-1][j-1] = adjacentcy_matrix[i][j];
+                
+            }
+ 
+        }
+        
+        
+        // for(int i=0;i<n-1;i++)
+        // {
+        //     for(int j=0;j<n-1;j++)
+        //     {
+        //         cout<<temp[i][j]<<" "; 
+        //     }
+        //     cout<<endl;
+        // }
+        
+        
+        return determinantOfMatrix(temp,n-1);
+        
+        
+        
+      
+    }

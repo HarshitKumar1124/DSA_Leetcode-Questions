@@ -1,0 +1,42 @@
+
+
+
+BINARY TREE - Left View
+
+**************************
+
+vector<int> BFS(Node* root)
+{
+    if(root==NULL)
+    return {};
+    
+    queue<pair<Node*,int>> q;
+    q.push(make_pair(root,1));
+    map<int,int> mp;
+    
+    while(q.size()!=0)
+    {
+        pair<Node*,int> temp = q.front();
+        q.pop();
+        
+        Node* ptr = temp.first;
+        int level = temp.second;
+        
+        if(ptr->left!=NULL)
+        q.push(make_pair(ptr->left,level+1));
+        
+        if(ptr->right!=NULL)
+        q.push(make_pair(ptr->right,level+1));
+        
+        if(mp.find(level)==mp.end())
+        mp[level]=ptr->data;
+    }
+    
+    
+    vector<int> ans;
+    
+    for(auto x=mp.begin();x!=mp.end();x++)
+    ans.push_back(x->second);
+    
+    return ans;
+}

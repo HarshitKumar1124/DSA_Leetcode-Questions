@@ -1,0 +1,121 @@
+
+
+
+Graph : Find Bridges in the Graph : 
+
+https://www.geeksforgeeks.org/bridge-in-a-graph/
+
+*************************************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+void CreateEdge(int u,int v,vector<int> Graph[])
+{
+    Graph[u].push_back(v);
+    Graph[v].push_back(u);
+}
+
+void RemoveEdge(int u,int v,vector<int> Graph[])
+{
+    auto x  = find(Graph[u].begin(),Graph[u].end(),v);
+    Graph[u].erase(x);
+    
+    auto y  = find(Graph[v].begin(),Graph[v].end(),u);
+    Graph[v].erase(y);
+    
+}
+
+void PrintGraph(vector<int> Graph[],int n)
+{
+    cout<<"Graph is: "<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cout<<i<<"->";
+        for(auto x:Graph[i])
+    cout<<x<<" ";
+    cout<<endl;
+    }
+}
+
+
+void BFS(vector<int> Graph[],int &n,int element,vector<int> &visited)
+{
+    queue<int> q;
+    q.push(element);
+    visited[element]=1;
+    
+    while(q.size()!=0)
+    {
+        int temp = q.front();
+        q.pop();
+        
+        for(auto x:Graph[temp])
+        {
+            if(!visited[x])
+            {
+                visited[x]=1;
+                q.push(x);
+            }
+        }
+    }
+}
+
+
+
+int ComponentsCount(vector<int> Graph[],int n)
+{
+    int counter=0;
+    vector<int> visited(n,0);
+    
+    for(int i=0;i<n;i++)
+    {
+        if(!visited[i])
+        {
+            counter++;
+            BFS(Graph,n,i,visited);
+        }
+    }
+    
+    return counter;
+}
+
+int main()
+{
+    
+    int n = 4;
+    
+    vector<int> Graph[n];
+    
+    vector<vector<int>> Edges = {{0,1},{1,2},{2,3}};
+    
+    for(auto x:Edges)
+    CreateEdge(x[0],x[1],Graph);
+    
+    PrintGraph(Graph,n);
+    
+    vector<vector<int>> ans;
+    
+    for(auto x:Edges)
+    {
+        RemoveEdge(x[0],x[1],Graph);
+        
+        if(ComponentsCount(Graph,n)>1)
+        ans.push_back({x[0],x[1]});
+
+    
+     CreateEdge(x[0],x[1],Graph);
+        
+    }
+    
+    if(ans.size()==0)
+    cout<<"No Bridge";
+    else
+    {
+       cout<<"\nBridges are as Follows: "<<endl;
+       for(auto x:ans)
+       cout<<x[0]<<"->"<<x[1]<<endl;
+       
+    }
+}

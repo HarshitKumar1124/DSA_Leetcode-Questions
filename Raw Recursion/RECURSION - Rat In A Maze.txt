@@ -1,0 +1,48 @@
+
+
+
+
+RECURSION - Rat In A Maze
+
+***************************
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+int MazeRunner(vector<vector<int>> &maze,int i,int j,int &n)
+{
+    if(i==n-1 and j==n-1)
+    return 1;
+    
+    vector<vector<int>> directions ={{1,0},{0,1}};
+    
+    int ans=0;
+    
+    for(auto x:directions)
+    {
+        int newX = i + x[0];
+        int newY = j+ x[1];
+        
+        if(newX>=0 and newX<n and newY>=0 and newY<n and maze[newX][newY]!=-1)
+        ans+=MazeRunner(maze,newX,newY,n);
+    }
+    
+    return ans;
+    
+}
+
+int main()
+{
+    vector<vector<int>> maze = {{0,  0, 0, 0},
+                      {0, -1, 0, 0},
+                      {-1, 0, 0, 0},
+                      {0,  0, 0, 0}};
+                     
+    int n = maze.size();
+    if(maze[0][0]==-1 or maze[n-1][n-1]==-1) 
+    cout<<false;
+    else      
+    cout<<MazeRunner(maze,0,0,n);
+}

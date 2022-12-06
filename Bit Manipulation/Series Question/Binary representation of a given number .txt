@@ -1,0 +1,62 @@
+
+
+Binary representation of a given number 
+
+https://www.geeksforgeeks.org/binary-representation-of-a-given-number/
+
+
+*******************************************
+
+
+Approach 1: 
+
+**********
+
+
+# include <bits/stdc++.h>
+using namespace std;
+
+void PrintBinary(unsigned int n)
+{
+    
+    
+
+unsigned int j = 1<<31;
+    
+    for(;j>0;j/=2)
+    {
+        if(n&j)
+        cout<<1;
+        else
+        cout<<0;
+    }
+}
+
+int main()
+{
+    unsigned int n = 2;
+    
+    PrintBinary(n);
+}
+
+
+********************************************************
+
+Approach 2:  BITSET DATAtype
+
+***************
+
+# include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    unsigned int n = 2;
+    
+    bitset<10> b(n);
+    
+    //bitset is datatype that contains binary form of the given number 
+    
+    cout<<b;
+}
